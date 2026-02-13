@@ -3,43 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Funitize</title>
-    <meta name="description" content="Tips, tutorials, and inspiration for making your Shopify store more engaging with Funitize animations.">
+
+    <!-- SEO Meta Tags -->
+    <title>Funitize Blog - Shopify Animation Tips, Tutorials & Best Practices</title>
+    <meta name="description" content="Learn how to boost Shopify sales with animations. Expert tips on holiday effects, conversion optimization, and creating magical shopping experiences.">
+    <meta name="keywords" content="shopify animations, e-commerce animations, holiday effects, conversion optimization, shopify tips, animation tutorials, store engagement">
+    <meta name="author" content="Funitize">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://funitize.com/blog">
+    <meta property="og:title" content="Funitize Blog - Shopify Animation Tips & Tutorials">
+    <meta property="og:description" content="Expert insights on using animations to boost your Shopify store's sales and engagement.">
+    <meta property="og:image" content="https://funitize.com/assets/funitize-logo.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://funitize.com/blog">
+    <meta property="twitter:title" content="Funitize Blog - Shopify Animation Tips & Tutorials">
+    <meta property="twitter:description" content="Expert insights on using animations to boost your Shopify store's sales and engagement.">
+    <meta property="twitter:image" content="https://funitize.com/assets/funitize-logo.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://funitize.com/blog">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260213">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260214">
+
     <style>
-        .blog-page { min-height: 100vh; padding: 120px 0 80px; }
-        .blog-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        .blog-header { text-align: center; margin-bottom: 60px; }
-        .blog-header h1 { font-size: 48px; margin-bottom: 16px; font-family: 'Fredoka', sans-serif; }
-        .blog-header p { font-size: 18px; color: var(--gray-700); }
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 32px; }
-        .blog-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; }
+        :root {
+            --dark: #1A1A2E;
+            --primary: #5170FF;
+            --secondary: #FF66C4;
+            --accent-1: #FFB800;
+            --accent-2: #00D9FF;
+            --accent-3: #9333ea;
+            --light: #FFFFFF;
+            --gray-700: rgba(26, 26, 46, 0.7);
+            --gray-500: rgba(26, 26, 46, 0.5);
+        }
+
+        body { font-family: 'Outfit', sans-serif; background: #F8F9FF; margin: 0; padding: 0; }
+
+        /* Header Override for Blog Page */
+        .header {
+            background: white;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(81, 112, 255, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo-image { height: 40px; width: auto; }
+
+        .blog-hero {
+            padding: 140px 24px 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--light);
+            text-align: center;
+        }
+
+        .blog-hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .blog-hero p {
+            font-size: 20px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Category Filters */
+        .category-filters {
+            background: white;
+            padding: 32px 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+        }
+
+        .filter-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 16px;
+        }
+
+        .filter-btn {
+            padding: 10px 24px;
+            border-radius: 50px;
+            border: 2px solid var(--gray-500);
+            background: white;
+            color: var(--dark);
+            font-family: 'Outfit', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-color: transparent;
+        }
+
+        .blog-container { max-width: 1200px; margin: 0 auto; padding: 80px 24px; }
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 32px; margin-bottom: 60px; }
+        .blog-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; cursor: pointer; }
         .blog-card:hover { transform: translateY(-8px); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); }
         .blog-card-image { width: 100%; height: 220px; object-fit: cover; background: linear-gradient(135deg, var(--primary), var(--accent-3)); display: flex; align-items: center; justify-content: center; font-size: 64px; }
         .blog-card-content { padding: 24px; }
-        .blog-category { display: inline-block; background: var(--primary); color: var(--dark); padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 12px; }
-        .blog-card h3 { font-family: 'Fredoka', sans-serif; font-size: 22px; margin-bottom: 12px; color: var(--dark); }
+        .blog-category { display: inline-block; background: var(--primary); color: white; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 12px; text-transform: capitalize; }
+        .blog-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; color: var(--dark); line-height: 1.3; }
         .blog-card p { color: var(--gray-700); line-height: 1.6; margin-bottom: 16px; }
         .blog-meta { display: flex; align-items: center; gap: 16px; font-size: 14px; color: var(--gray-700); }
-        .blog-date { display: flex; align-items: center; gap: 6px; }
-        .blog-read-time { display: flex; align-items: center; gap: 6px; }
+        .blog-date, .blog-read-time { display: flex; align-items: center; gap: 6px; }
         .read-more { color: var(--primary); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-top: 12px; }
         .read-more:hover { text-decoration: underline; }
+
+        /* Load More Section */
+        .load-more-section {
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .load-more-btn {
+            display: inline-block;
+            padding: 18px 48px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(81, 112, 255, 0.3);
+        }
+
+        .load-more-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(81, 112, 255, 0.4);
+        }
+
+        .load-more-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .no-posts-message {
+            text-align: center;
+            padding: 60px 24px;
+            color: var(--gray-700);
+            font-size: 18px;
+        }
+
         @media (max-width: 768px) {
+            .blog-hero h1 { font-size: 36px; }
+            .blog-hero p { font-size: 18px; }
             .blog-grid { grid-template-columns: 1fr; }
+            .category-filters { top: 60px; padding: 20px 16px; }
+            .filter-container { gap: 8px; }
+            .filter-btn { padding: 8px 16px; font-size: 14px; }
         }
     </style>
 </head>
 <body>
     <canvas id="confetti-canvas"></canvas>
 
+    <!-- Header -->
     <header class="header">
         <div class="container header-content">
             <a href="index.html" class="logo">
-                <img src="assets/fun-logo.png?v=20260213" alt="Funitize" class="logo-image">
+                <img src="assets/funitize-logo.jpg?v=20260214" alt="Funitize" class="logo-image">
             </a>
             <nav class="nav">
                 <a href="index.html#features" class="nav-link">Features</a>
@@ -50,207 +208,227 @@
         </div>
     </header>
 
-    <section class="blog-page">
-        <div class="blog-container">
-            <div class="blog-header">
-                <h1>Funitize Blog</h1>
-                <p>Tips, tutorials, and inspiration for creating unforgettable shopping experiences</p>
-            </div>
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+        <h1>Funitize Blog</h1>
+        <p>Expert tips, tutorials, and strategies to transform your Shopify store with magical animations</p>
+    </section>
 
-            <div class="blog-grid">
-                <!-- Blog Post 1 -->
-                <article class="blog-card">
-                    <div class="blog-card-image">❄️</div>
-                    <div class="blog-card-content">
-                        <span class="blog-category">Tutorial</span>
-                        <h3>Perfect Timing: Scheduling Holiday Animations</h3>
-                        <p>Learn how to plan and schedule your store's animations for every holiday season. Set it once and let Funitize handle the magic.</p>
-                        <div class="blog-meta">
-                            <span class="blog-date">📅 Feb 10, 2025</span>
-                            <span class="blog-read-time">⏱️ 5 min read</span>
-                        </div>
-                        <a href="#" class="read-more">Read More →</a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 2 -->
-                <article class="blog-card">
-                    <div class="blog-card-image">🎨</div>
-                    <div class="blog-card-content">
-                        <span class="blog-category">Design Tips</span>
-                        <h3>Matching Animations to Your Brand</h3>
-                        <p>Discover how to choose and customize animations that perfectly align with your store's aesthetic and brand identity.</p>
-                        <div class="blog-meta">
-                            <span class="blog-date">📅 Feb 8, 2025</span>
-                            <span class="blog-read-time">⏱️ 4 min read</span>
-                        </div>
-                        <a href="#" class="read-more">Read More →</a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 3 -->
-                <article class="blog-card">
-                    <div class="blog-card-image">📈</div>
-                    <div class="blog-card-content">
-                        <span class="blog-category">Case Study</span>
-                        <h3>How Snowfall Increased Engagement by 43%</h3>
-                        <p>Real results from a Shopify store that used Funitize winter animations to boost customer engagement during the holiday season.</p>
-                        <div class="blog-meta">
-                            <span class="blog-date">📅 Feb 5, 2025</span>
-                            <span class="blog-read-time">⏱️ 6 min read</span>
-                        </div>
-                        <a href="#" class="read-more">Read More →</a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 4 -->
-                <article class="blog-card">
-                    <div class="blog-card-image">💡</div>
-                    <div class="blog-card-content">
-                        <span class="blog-category">Best Practices</span>
-                        <h3>5 Rules for Using Animations Without Overdoing It</h3>
-                        <p>Strike the perfect balance between delightful and distracting. Learn when and how to use animations effectively.</p>
-                        <div class="blog-meta">
-                            <span class="blog-date">📅 Feb 3, 2025</span>
-                            <span class="blog-read-time">⏱️ 5 min read</span>
-                        </div>
-                        <a href="#" class="read-more">Read More →</a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 5 -->
-                <article class="blog-card">
-                    <div class="blog-card-image">🎯</div>
-                    <div class="blog-card-content">
-                        <span class="blog-category">Marketing</span>
-                        <h3>Using Clickable Animations as CTAs</h3>
-                        <p>Turn your falling animations into powerful call-to-actions that drive traffic to sales, collections, and promotions.</p>
-                        <div class="blog-meta">
-                            <span class="blog-date">📅 Feb 1, 2025</span>
-                            <span class="blog-read-time">⏱️ 7 min read</span>
-                        </div>
-                        <a href="#" class="read-more">Read More →</a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 6 -->
-                <article class="blog-card">
-                    <div class="blog-card-image">🚀</div>
-                    <div class="blog-card-content">
-                        <span class="blog-category">Product Updates</span>
-                        <h3>New in Funitize: Custom Animation Uploads</h3>
-                        <p>Introducing the ability to upload your own images and turn them into custom falling animations unique to your brand.</p>
-                        <div class="blog-meta">
-                            <span class="blog-date">📅 Jan 28, 2025</span>
-                            <span class="blog-read-time">⏱️ 3 min read</span>
-                        </div>
-                        <a href="#" class="read-more">Read More →</a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 7 -->
-                <article class="blog-card">
-                    <div class="blog-card-image">💖</div>
-                    <div class="blog-card-content">
-                        <span class="blog-category">Seasonal Ideas</span>
-                        <h3>Valentine's Day Animation Ideas for E-commerce</h3>
-                        <p>Creative ways to use hearts, roses, and romantic animations to boost sales during the season of love.</p>
-                        <div class="blog-meta">
-                            <span class="blog-date">📅 Jan 25, 2025</span>
-                            <span class="blog-read-time">⏱️ 4 min read</span>
-                        </div>
-                        <a href="#" class="read-more">Read More →</a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 8 -->
-                <article class="blog-card">
-                    <div class="blog-card-image">⚡</div>
-                    <div class="blog-card-content">
-                        <span class="blog-category">Performance</span>
-                        <h3>Why Funitize Won't Slow Down Your Store</h3>
-                        <p>A deep dive into how we optimize animations for maximum visual impact with zero performance cost.</p>
-                        <div class="blog-meta">
-                            <span class="blog-date">📅 Jan 22, 2025</span>
-                            <span class="blog-read-time">⏱️ 8 min read</span>
-                        </div>
-                        <a href="#" class="read-more">Read More →</a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 9 -->
-                <article class="blog-card">
-                    <div class="blog-card-image">🎃</div>
-                    <div class="blog-card-content">
-                        <span class="blog-category">Seasonal Ideas</span>
-                        <h3>Spooky Season: Halloween Animation Strategies</h3>
-                        <p>Plan your Halloween store transformation with pumpkins, ghosts, and other eerie animations that convert.</p>
-                        <div class="blog-meta">
-                            <span class="blog-date">📅 Jan 20, 2025</span>
-                            <span class="blog-read-time">⏱️ 6 min read</span>
-                        </div>
-                        <a href="#" class="read-more">Read More →</a>
-                    </div>
-                </article>
-            </div>
+    <!-- Category Filters -->
+    <section class="category-filters">
+        <div class="filter-container">
+            <span class="filter-label">Filter by:</span>
+            <button class="filter-btn active" data-category="all">All Posts</button>
+            <button class="filter-btn" data-category="tutorial">Tutorials</button>
+            <button class="filter-btn" data-category="strategy">Strategy</button>
+            <button class="filter-btn" data-category="conversion">Conversion</button>
+            <button class="filter-btn" data-category="design">Design</button>
+            <button class="filter-btn" data-category="case-study">Case Studies</button>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-brand">
-                <a href="index.html" class="logo">
-                    <img src="assets/fun-logo.png?v=20260213" alt="Funitize" class="logo-image">
-                </a>
-                <p>Make your Shopify store unforgettable.</p>
-            </div>
-            <div class="footer-links">
-                <div class="footer-column">
-                    <h4>Product</h4>
-                    <a href="index.html#features">Features</a>
-                    <a href="index.html#animations">Animations</a>
-                    <a href="index.html#how-it-works">How It Works</a>
-                    <a href="https://apps.shopify.com/funitize" target="_blank">Download App</a>
-                </div>
-                <div class="footer-column">
-                    <h4>Support</h4>
-                    <a href="contact.html">Contact Us</a>
-                    <a href="docs.html">Documentation</a>
-                    <a href="faq.html">FAQ</a>
-                </div>
-                <div class="footer-column">
-                    <h4>Legal</h4>
-                    <a href="privacy.html">Privacy Policy</a>
-                    <a href="terms.html">Terms of Service</a>
-                    <a href="refund.html">Refund Policy</a>
-                </div>
-                <div class="footer-column">
-                    <h4>Resources</h4>
-                    <a href="blog.html">Blog</a>
-                    <a href="index.html#animations">Animation Library</a>
-                    <a href="https://apps.shopify.com/funitize" target="_blank">Shopify App Store</a>
-                </div>
-            </div>
+    <!-- Blog Grid -->
+    <div class="blog-container">
+        <div class="blog-grid" id="blog-grid">
+            <!-- Blog posts will be loaded here by JavaScript -->
         </div>
-        <div class="footer-bottom">
-            <div class="footer-social">
-                <a href="https://twitter.com/funitize" target="_blank" aria-label="Twitter">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                </a>
-                <a href="https://facebook.com/funitize" target="_blank" aria-label="Facebook">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                </a>
-                <a href="https://instagram.com/funitize" target="_blank" aria-label="Instagram">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                </a>
-                <a href="https://youtube.com/@funitize" target="_blank" aria-label="YouTube">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </a>
-            </div>
-            <p>&copy; 2025 Funitize. All rights reserved. Be fun. Don't be boring. 🎉</p>
-        </div>
-    </footer>
 
-    <script src="script.js?v=20260213"></script>
+        <div class="load-more-section">
+            <button class="load-more-btn" id="load-more-btn">Load More Posts</button>
+            <p class="no-posts-message" id="no-more-message" style="display: none;">You've reached the end! Check back soon for more content.</p>
+        </div>
+    </div>
+
+    <script src="script.js?v=20260214"></script>
+    <script>
+        // Blog Posts Data
+        const blogPosts = [
+            {
+                title: "How Valentine's Day Animations Boost Conversion Rates",
+                excerpt: "Discover the science behind holiday animations and why they create emotional connections that drive sales. Real data from stores that saw 23% conversion lift.",
+                emoji: "💖",
+                category: "conversion",
+                date: "Feb 14, 2026",
+                readTime: "6 min",
+                url: "blog/valentines-day-animation-conversion.html"
+            },
+            {
+                title: "Mobile Animation Performance: The Complete Guide",
+                excerpt: "Learn how to optimize animations for mobile devices without sacrificing performance. Tips for smooth 60fps animations that don't drain battery.",
+                emoji: "📱",
+                category: "tutorial",
+                date: "Feb 11, 2026",
+                readTime: "8 min",
+                url: "blog/mobile-animation-performance.html"
+            },
+            {
+                title: "Black Friday Animation Strategy That Generated $47K",
+                excerpt: "A complete breakdown of how one Shopify store used timed animations during Black Friday to create urgency and drive massive sales.",
+                emoji: "🎆",
+                category: "case-study",
+                date: "Feb 8, 2026",
+                readTime: "7 min",
+                url: "blog/black-friday-animation-strategy.html"
+            },
+            {
+                title: "2025 Holiday Animation Calendar for Shopify Stores",
+                excerpt: "Plan your entire year of holiday animations. A month-by-month guide to scheduling magical effects for maximum engagement and sales.",
+                emoji: "📅",
+                category: "strategy",
+                date: "Feb 5, 2026",
+                readTime: "10 min",
+                url: "blog/holiday-animation-calendar-2025.html"
+            },
+            {
+                title: "Making Your Store Memorable: The Power of Animation",
+                excerpt: "Why customers remember stores that make them smile. The psychology behind delightful micro-interactions and how they build brand loyalty.",
+                emoji: "✨",
+                category: "strategy",
+                date: "Feb 1, 2026",
+                readTime: "5 min",
+                url: "blog/making-customers-say-wow.html"
+            },
+            {
+                title: "Magical First Impressions: Homepage Animation Guide",
+                excerpt: "Your homepage is your handshake. Learn how to use animations to create instant delight without overwhelming visitors.",
+                emoji: "🎨",
+                category: "design",
+                date: "Jan 28, 2026",
+                readTime: "6 min",
+                url: "blog/magical-first-impressions-animations.html"
+            },
+            {
+                title: "Shopify Animations: Magical, Not Annoying",
+                excerpt: "The fine line between delightful and distracting. A guide to tasteful animation that enhances shopping without interrupting it.",
+                emoji: "🎭",
+                category: "design",
+                date: "Jan 24, 2026",
+                readTime: "7 min",
+                url: "blog/shopify-animations-magical-not-annoying.html"
+            },
+            {
+                title: "Playful Popups That Create Positive Shopping Energy",
+                excerpt: "How to use animated popups to promote sales without annoying customers. Real examples of popups that increased engagement by 34%.",
+                emoji: "🎉",
+                category: "conversion",
+                date: "Jan 20, 2026",
+                readTime: "6 min",
+                url: "blog/playful-popups-positive-shopping-energy.html"
+            },
+            {
+                title: "The Happy Moment: Checkout Animation Psychology",
+                excerpt: "Why animations at checkout reduce cart abandonment. The surprising psychology of positive reinforcement during the purchase decision.",
+                emoji: "🛒",
+                category: "conversion",
+                date: "Jan 17, 2026",
+                readTime: "5 min",
+                url: "blog/checkout-happy-moment.html"
+            },
+            {
+                title: "Experience, Not Transaction: Emotional E-commerce",
+                excerpt: "Transform your store from a transaction machine into an experience destination. How top brands use animations to create emotional connections.",
+                emoji: "💫",
+                category: "strategy",
+                date: "Jan 13, 2026",
+                readTime: "8 min",
+                url: "blog/experience-not-transaction.html"
+            },
+            {
+                title: "Adding Delight Without Distraction: The Balance",
+                excerpt: "Master the art of subtle animation. Learn when to go big with effects and when to keep it minimal for maximum impact.",
+                emoji: "⚖️",
+                category: "design",
+                date: "Jan 10, 2026",
+                readTime: "6 min",
+                url: "blog/add-delight-without-distracting.html"
+            }
+        ];
+
+        let currentFilter = 'all';
+        let displayedPosts = 6;
+        const postsPerLoad = 3;
+
+        function renderBlogPosts() {
+            const blogGrid = document.getElementById('blog-grid');
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            const noMoreMessage = document.getElementById('no-more-message');
+
+            // Filter posts
+            const filteredPosts = currentFilter === 'all'
+                ? blogPosts
+                : blogPosts.filter(post => post.category === currentFilter);
+
+            // Clear grid
+            blogGrid.innerHTML = '';
+
+            // Show posts up to displayedPosts limit
+            const postsToShow = filteredPosts.slice(0, displayedPosts);
+
+            if (postsToShow.length === 0) {
+                blogGrid.innerHTML = '<p class="no-posts-message">No posts found in this category. Try a different filter!</p>';
+                loadMoreBtn.style.display = 'none';
+                noMoreMessage.style.display = 'none';
+                return;
+            }
+
+            postsToShow.forEach(post => {
+                const card = document.createElement('article');
+                card.className = 'blog-card';
+                card.onclick = () => window.location.href = post.url;
+
+                card.innerHTML = `
+                    <div class="blog-card-image">${post.emoji}</div>
+                    <div class="blog-card-content">
+                        <span class="blog-category">${post.category}</span>
+                        <h3>${post.title}</h3>
+                        <p>${post.excerpt}</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">📅 ${post.date}</span>
+                            <span class="blog-read-time">⏱️ ${post.readTime} read</span>
+                        </div>
+                        <a href="${post.url}" class="read-more">Read More →</a>
+                    </div>
+                `;
+
+                blogGrid.appendChild(card);
+            });
+
+            // Show/hide load more button
+            if (postsToShow.length < filteredPosts.length) {
+                loadMoreBtn.style.display = 'inline-block';
+                noMoreMessage.style.display = 'none';
+            } else {
+                loadMoreBtn.style.display = 'none';
+                if (filteredPosts.length >= postsPerLoad) {
+                    noMoreMessage.style.display = 'block';
+                }
+            }
+        }
+
+        // Category filter click handlers
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active state
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                // Update filter and reset display count
+                currentFilter = this.dataset.category;
+                displayedPosts = 6;
+
+                // Re-render
+                renderBlogPosts();
+            });
+        });
+
+        // Load more button
+        document.getElementById('load-more-btn').addEventListener('click', function() {
+            displayedPosts += postsPerLoad;
+            renderBlogPosts();
+        });
+
+        // Initial render
+        renderBlogPosts();
+    </script>
 </body>
 </html>

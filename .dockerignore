@@ -1,0 +1,9 @@
+.git
+.gitignore
+.netlify
+node_modules
+.env
+.env.example
+README.md
+*.log
+.DS_Store
