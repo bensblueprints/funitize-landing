@@ -2,6 +2,21 @@
 const canvas = document.getElementById('confetti-canvas');
 const ctx = canvas.getContext('2d');
 
+// Preload images for cannabis animations
+const loadedImages = {};
+const imagesToLoad = {
+    'cannabisbuds': 'assets/cannabis-bud.png',
+    'cannabisleaves': 'assets/cannabis-leaf.png',
+    'waterbong': 'assets/water-bong.png'
+};
+
+// Load images
+Object.keys(imagesToLoad).forEach(key => {
+    const img = new Image();
+    img.src = imagesToLoad[key];
+    loadedImages[key] = img;
+});
+
 // Set canvas size
 function resizeCanvas() {
     canvas.width = window.innerWidth;
@@ -119,23 +134,23 @@ const animationThemes = {
     },
     cannabisbuds: {
         name: 'Cannabis Buds',
-        emoji: '🌿',
+        image: 'assets/cannabis-bud.png',
         colors: ['#4caf50', '#66bb6a', '#2e7d32'],
-        type: 'emoji',
+        type: 'image',
         count: 45
     },
     cannabisleaves: {
         name: 'Cannabis Leaves',
-        emoji: '🍃',
+        image: 'assets/cannabis-leaf.png',
         colors: ['#689F38', '#8BC34A', '#558B2F'],
-        type: 'emoji',
+        type: 'image',
         count: 50
     },
     waterbong: {
         name: 'Waterbongs',
-        emoji: '🔬',
+        image: 'assets/water-bong.png',
         colors: ['#42a5f5', '#1976d2', '#0d47a1'],
-        type: 'emoji',
+        type: 'image',
         count: 35
     }
 };
@@ -231,6 +246,16 @@ class Particle {
                 ctx.arc(x, y, 2, 0, Math.PI * 2);
                 ctx.fill();
             }
+        } else if (this.theme.type === 'image' && this.theme.image) {
+            // Draw image-based particles (cannabis icons)
+            const themeName = Object.keys(animationThemes).find(
+                key => animationThemes[key] === this.theme
+            );
+            const img = loadedImages[themeName];
+            if (img && img.complete) {
+                const imgSize = this.size * 3; // Make images larger for visibility
+                ctx.drawImage(img, -imgSize / 2, -imgSize / 2, imgSize, imgSize);
+            }
         }
 
         ctx.restore();
@@ -310,12 +335,18 @@ const widgetHTML = `
                 <button class="widget-close" id="widget-close">✕</button>
             </div>
             <div class="widget-grid">
-                ${Object.keys(animationThemes).map(key => `
-                    <button class="theme-option ${key === 'confetti' ? 'active' : ''}" data-theme="${key}">
-                        <span class="theme-emoji">${animationThemes[key].emoji}</span>
-                        <span class="theme-name">${animationThemes[key].name}</span>
-                    </button>
-                `).join('')}
+                ${Object.keys(animationThemes).map(key => {
+                    const theme = animationThemes[key];
+                    const iconHtml = theme.type === 'image'
+                        ? `<img src="${theme.image}" alt="${theme.name}" style="width: 32px; height: 32px; object-fit: contain;">`
+                        : `<span class="theme-emoji">${theme.emoji}</span>`;
+                    return `
+                        <button class="theme-option ${key === 'confetti' ? 'active' : ''}" data-theme="${key}">
+                            ${iconHtml}
+                            <span class="theme-name">${theme.name}</span>
+                        </button>
+                    `;
+                }).join('')}
             </div>
         </div>
     </div>
