@@ -10,7 +10,7 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
-// Animation themes with 15 different options
+// Animation themes with 18 different options (including cannabis themes)
 const animationThemes = {
     confetti: {
         name: 'Confetti',
@@ -116,6 +116,27 @@ const animationThemes = {
         colors: ['#4caf50', '#66bb6a', '#81c784'],
         type: 'emoji',
         count: 40
+    },
+    cannabisbuds: {
+        name: 'Cannabis Buds',
+        emoji: '🌿',
+        colors: ['#4caf50', '#66bb6a', '#2e7d32'],
+        type: 'emoji',
+        count: 45
+    },
+    cannabisleaves: {
+        name: 'Cannabis Leaves',
+        emoji: '🍃',
+        colors: ['#689F38', '#8BC34A', '#558B2F'],
+        type: 'emoji',
+        count: 50
+    },
+    waterbong: {
+        name: 'Waterbongs',
+        emoji: '🔬',
+        colors: ['#42a5f5', '#1976d2', '#0d47a1'],
+        type: 'emoji',
+        count: 35
     }
 };
 

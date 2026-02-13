@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Animation Performance: The Complete Guide to Fast, Beautiful Effects on Any Device</title>
+    <meta name="description" content="Master mobile animation performance. Learn how to deliver stunning visual effects without sacrificing speed on smartphones and tablets.">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .blog-post {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 120px 24px 80px;
+        }
+        .blog-header {
+            margin-bottom: 48px;
+        }
+        .blog-meta {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 24px;
+            color: #666;
+            font-size: 14px;
+        }
+        .blog-category {
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-weight: 600;
+        }
+        .blog-content {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+        }
+        .blog-content h2 {
+            margin-top: 48px;
+            margin-bottom: 24px;
+            font-size: 32px;
+        }
+        .blog-content h3 {
+            margin-top: 36px;
+            margin-bottom: 18px;
+            font-size: 24px;
+            color: #444;
+        }
+        .blog-content p {
+            margin-bottom: 24px;
+        }
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 24px;
+            padding-left: 24px;
+        }
+        .blog-content li {
+            margin-bottom: 12px;
+        }
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 16px;
+            margin: 48px 0;
+            text-align: center;
+        }
+        .cta-box h3 {
+            color: white !important;
+            margin-top: 0 !important;
+        }
+        .cta-box .cta-button {
+            background: white;
+            color: var(--primary);
+            margin-top: 16px;
+        }
+        .highlight-box {
+            background: #FFF9E6;
+            border-left: 4px solid var(--secondary);
+            padding: 24px;
+            margin: 32px 0;
+            border-radius: 8px;
+        }
+        .code-block {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 24px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <img src="../assets/fun-logo.png?v=20260213" alt="Funitize" style="height: 40px;">
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../index.html#features">Features</a>
+                <a href="../index.html#animations">Animations</a>
+                <a href="../blog.html">Blog</a>
+                <a href="../contact.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="blog-post">
+        <div class="blog-header">
+            <div class="blog-meta">
+                <span class="blog-category">Technical Guide</span>
+                <span>📅 February 13, 2026</span>
+                <span>⏱️ 14 min read</span>
+            </div>
+            <h1>Mobile Animation Performance: The Complete Guide to Fast, Beautiful Effects on Any Device</h1>
+        </div>
+
+        <div class="blog-content">
+            <p>Here's a stat that should change your entire approach to e-commerce design: <strong>78% of online shopping traffic now comes from mobile devices.</strong></p>
+
+            <p>And here's another: <strong>53% of mobile users abandon sites that take longer than 3 seconds to load.</strong></p>
+
+            <p>If you're using animations to create delightful shopping experiences (which you absolutely should be), you're walking a tightrope. Too much animation and you slow down the site, losing half your visitors. Too little and you blend into the sea of boring, forgettable stores.</p>
+
+            <p>This guide will show you exactly how to deliver stunning animations on mobile without sacrificing one millisecond of performance. These are the same strategies that helped Shopify stores using Funitize maintain sub-2-second load times while running multiple particle effects.</p>
+
+            <h2>Understanding Mobile Performance Constraints</h2>
+
+            <p>Before we optimize, you need to understand why mobile is fundamentally different from desktop:</p>
+
+            <h3>Processing Power</h3>
+
+            <p>Even flagship smartphones have less processing power than budget laptops. A $1200 iPhone 15 Pro has roughly the same GPU capability as a 5-year-old MacBook Air. Budget Android phones? Even less.</p>
+
+            <p>What this means for animations:</p>
+            <ul>
+                <li>Particle effects that run smoothly at 60fps on desktop might struggle to hit 30fps on mobile</li>
+                <li>Complex calculations (physics, collisions) are expensive on phones</li>
+                <li>Battery drain becomes a factor—heavy animations kill battery life</li>
+            </ul>
+
+            <h3>Screen Size</h3>
+
+            <p>Smaller screens need fewer particles to create the same visual density. A desktop screen at 1920x1080 might need 80 particles to look full. A mobile screen at 390x844 needs maybe 35.</p>
+
+            <p>This actually works in your favor—fewer particles means less processing.</p>
+
+            <h3>Network Conditions</h3>
+
+            <p>Mobile users aren't always on WiFi. 4G and 5G are fast but not as reliable as wired connections. Heavy JavaScript files for animation libraries can delay your time-to-interactive.</p>
+
+            <h3>Touch vs. Mouse</h3>
+
+            <p>Hover effects don't exist on mobile (not really—you can hack them with touch events, but it feels weird). Your animation triggers need to adapt.</p>
+
+            <div class="highlight-box">
+                <strong>📊 Benchmark:</strong> A well-optimized mobile e-commerce site with animations should maintain:
+                <ul style="margin-top: 12px; margin-bottom: 0;">
+                    <li>First Contentful Paint: Under 1.5 seconds</li>
+                    <li>Largest Contentful Paint: Under 2.5 seconds</li>
+                    <li>Total Blocking Time: Under 300ms</li>
+                    <li>Animation frame rate: Consistent 30fps minimum (60fps ideal)</li>
+                </ul>
+            </div>
+
+            <h2>The 5 Golden Rules of Mobile Animation Performance</h2>
+
+            <h3>Rule 1: Reduce Particle Count by 50-60%</h3>
+
+            <p>This is the single most impactful optimization. Here's a practical framework:</p>
+
+            <div class="code-block">
+<strong>Desktop vs. Mobile Particle Counts:</strong><br><br>
+Subtle effect (background ambiance):
+- Desktop: 40-50 particles
+- Mobile: 20-25 particles<br><br>
+Medium effect (noticeable but not dominant):
+- Desktop: 60-80 particles
+- Mobile: 30-40 particles<br><br>
+Intense effect (hero moments, special occasions):
+- Desktop: 100-120 particles
+- Mobile: 50-60 particles
+            </div>
+
+            <p>Funitize automatically scales particle counts based on device, but you can override this manually for fine-tuning.</p>
+
+            <h3>Rule 2: Simplify Physics Calculations</h3>
+
+            <p>Complex particle behaviors (wind effects, collision detection, inter-particle physics) are expensive. On mobile, stick to simple behaviors:</p>
+
+            <ul>
+                <li><strong>✅ Good for mobile:</strong> Straight-line falling, gentle sway, rotation</li>
+                <li><strong>❌ Avoid on mobile:</strong> Particle-to-particle collisions, turbulence effects, complex path-following</li>
+            </ul>
+
+            <p>Most users can't even see the difference on small screens. Save the fancy physics for desktop.</p>
+
+            <h3>Rule 3: Use RequestAnimationFrame Wisely</h3>
+
+            <p>Don't animate what isn't visible. If your particles are running off-screen (above or below the viewport), pause them:</p>
+
+            <div class="code-block">
+// Simplified concept (Funitize handles this automatically)
+if (particle.y > screenHeight + 100) {
+    particle.reset(); // Move back to top instead of continuing to fall forever
+}
+            </div>
+
+            <p>This prevents wasted calculations on particles the user will never see.</p>
+
+            <h3>Rule 4: Leverage Hardware Acceleration</h3>
+
+            <p>Modern browsers can offload animation work to the GPU, but only if you use the right CSS properties. Animate these properties (GPU-accelerated):</p>
+
+            <ul>
+                <li><code>transform</code> (translate, scale, rotate)</li>
+                <li><code>opacity</code></li>
+            </ul>
+
+            <p>Avoid animating these (CPU-bound, slow):</p>
+
+            <ul>
+                <li><code>width</code>, <code>height</code></li>
+                <li><code>top</code>, <code>left</code> (use <code>transform: translate()</code> instead)</li>
+                <li><code>background-color</code></li>
+            </ul>
+
+            <p>Funitize uses hardware-accelerated properties by default, but if you're building custom animations, stick to transforms.</p>
+
+            <h3>Rule 5: Implement Graceful Degradation</h3>
+
+            <p>Not all phones are created equal. A 2026 iPhone runs circles around a 2022 budget Android. Your animations should automatically scale down on weaker devices:</p>
+
+            <ul>
+                <li>Monitor frame rate in real-time</li>
+                <li>If FPS drops below 30, reduce particle count by 30%</li>
+                <li>If FPS still struggles, pause animations entirely</li>
+            </ul>
+
+            <p>Funitize includes a performance monitor that does this automatically. Users on older devices see fewer particles, but they still get the experience—just scaled appropriately.</p>
+
+            <div class="cta-box">
+                <h3>🚀 Funitize: Built for Mobile Performance</h3>
+                <p>All these optimizations are baked into Funitize. Automatic particle scaling, GPU acceleration, performance monitoring—just install and go.</p>
+                <a href="../index.html#cta" class="cta-button">Try Funitize Free for 7 Days</a>
+            </div>
+
+            <h2>Device-Specific Optimization Strategies</h2>
+
+            <h3>iPhone (iOS)</h3>
+
+            <p><strong>Strengths:</strong> Excellent GPU, smooth rendering, consistent performance across models<br>
+            <strong>Weaknesses:</strong> Aggressive background tab throttling, Safari-specific quirks</p>
+
+            <p><strong>Optimization tips:</strong></p>
+            <ul>
+                <li>You can push particle counts higher on iPhones (they handle it well)</li>
+                <li>Pause animations immediately when tab becomes inactive (iOS is strict about this)</li>
+                <li>Test on both iPhone SE (smaller, slower) and iPhone Pro (larger, faster)</li>
+            </ul>
+
+            <h3>Android</h3>
+
+            <p><strong>Strengths:</strong> Wide range of devices means you can reach everyone<br>
+            <strong>Weaknesses:</strong> Performance varies wildly, lots of older devices still in use</p>
+
+            <p><strong>Optimization tips:</strong></p>
+            <ul>
+                <li>Assume the weakest common denominator (2021-2022 mid-range device)</li>
+                <li>Use lower particle counts by default</li>
+                <li>Test on Samsung Galaxy S21 and Google Pixel 6 (common devices)</li>
+                <li>Monitor frame rate closely and scale back aggressively if needed</li>
+            </ul>
+
+            <h3>Tablets (iPad, Android tablets)</h3>
+
+            <p><strong>Strengths:</strong> Larger screens, often more powerful than phones<br>
+            <strong>Weaknesses:</strong> Users expect near-desktop performance</p>
+
+            <p><strong>Optimization tips:</strong></p>
+            <ul>
+                <li>Treat tablets like small desktops—use higher particle counts</li>
+                <li>Take advantage of larger screen real estate</li>
+                <li>iPads can handle near-desktop levels of animation</li>
+            </ul>
+
+            <h2>Critical Performance Testing Checklist</h2>
+
+            <p>Before launching animations on mobile, run through this checklist:</p>
+
+            <h3>Testing Devices (Minimum Required)</h3>
+
+            <ol>
+                <li><strong>iPhone 12 or newer</strong> - Represents modern iOS users</li>
+                <li><strong>iPhone SE (2nd or 3rd gen)</strong> - Budget iOS, smaller screen</li>
+                <li><strong>Samsung Galaxy S21 or newer</strong> - Modern Android flagship</li>
+                <li><strong>Budget Android</strong> - Anything under $300, 2-3 years old</li>
+                <li><strong>iPad (9th gen or newer)</strong> - Tablet experience</li>
+            </ol>
+
+            <p>Don't have these devices? Use browser dev tools + real device cloud services (BrowserStack, LambdaTest).</p>
+
+            <h3>Performance Metrics to Measure</h3>
+
+            <div class="code-block">
+<strong>Use Chrome DevTools Performance Tab:</strong><br><br>
+1. Open your site on mobile device
+2. Open Chrome DevTools (USB debugging for Android)
+3. Go to Performance tab
+4. Record 10 seconds of normal scrolling<br><br>
+<strong>What to look for:</strong>
+- Green FPS bars (60fps = perfect, 30fps = acceptable, below 30 = problem)
+- No red sections (red = dropped frames)
+- JavaScript execution under 50ms per frame
+- No memory leaks (memory graph should be stable)
+            </div>
+
+            <h3>Network Conditions Testing</h3>
+
+            <p>Test your animations on simulated slower networks:</p>
+
+            <ul>
+                <li><strong>Fast 4G:</strong> 4Mbps down - Should work perfectly</li>
+                <li><strong>Slow 3G:</strong> 400Kbps down - Animations should still render once page loads</li>
+                <li><strong>Offline:</strong> If using service worker, animations should work from cache</li>
+            </ul>
+
+            <p>In Chrome DevTools, you can throttle network speed under the Network tab.</p>
+
+            <h2>Animation-Specific Mobile Optimization</h2>
+
+            <p>Different animation types have different performance characteristics on mobile. Here's how to optimize each:</p>
+
+            <h3>Falling Particles (Snow, Hearts, Confetti)</h3>
+
+            <p><strong>Desktop approach:</strong> 80-100 particles, complex physics, wind effects<br>
+            <strong>Mobile optimization:</strong></p>
+
+            <ul>
+                <li>Reduce to 35-50 particles</li>
+                <li>Simple straight-line falling (no wind simulation)</li>
+                <li>Remove particle rotation on Android (keep on iOS—it handles it better)</li>
+                <li>Use smaller particle sizes (saves on rendering cost)</li>
+            </ul>
+
+            <h3>Burst Effects (Fireworks, Explosions)</h3>
+
+            <p><strong>Desktop approach:</strong> Large bursts with many sub-particles<br>
+            <strong>Mobile optimization:</strong></p>
+
+            <ul>
+                <li>Reduce burst frequency (trigger every 5 seconds instead of every 2)</li>
+                <li>Fewer sub-particles per burst (15-20 instead of 40-50)</li>
+                <li>Shorter lifespan (particles disappear faster)</li>
+                <li>Consider using on-demand triggers only (button clicks) instead of automatic</li>
+            </ul>
+
+            <h3>Hover Effects (Sparkles, Glow)</h3>
+
+            <p><strong>Desktop approach:</strong> Triggered on mouse hover<br>
+            <strong>Mobile adaptation:</strong></p>
+
+            <ul>
+                <li>Convert to tap/touch effects instead of hover</li>
+                <li>Use brief, instant effects (0.5-1 second max)</li>
+                <li>Provide haptic feedback if supported (vibration)</li>
+                <li>Don't require holding—trigger on tap, not touch-hold</li>
+            </ul>
+
+            <h3>Background Animations (Ambient Effects)</h3>
+
+            <p><strong>Desktop approach:</strong> Always-on, subtle background animation<br>
+            <strong>Mobile optimization:</strong></p>
+
+            <ul>
+                <li>Reduce to 20-25 particles maximum</li>
+                <li>Slower animation speed (saves battery)</li>
+                <li>Pause during scrolling (user is focused on content, not background)</li>
+                <li>Resume when scroll stops</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>💡 Pro Tip:</strong> Use Intersection Observer API to only run animations when elements are in the viewport. Funitize does this automatically, but if you're building custom animations, implement viewport detection.
+            </div>
+
+            <h2>Battery Life Considerations</h2>
+
+            <p>Heavy animations drain battery. While this might not kill conversions immediately, it affects user perception of your brand:</p>
+
+            <h3>Signs Your Animations Are Too Heavy</h3>
+
+            <ul>
+                <li>Device gets noticeably warm within 1-2 minutes</li>
+                <li>Battery percentage drops quickly (more than 1% per minute of browsing)</li>
+                <li>Fan kicks in (on laptops) or phone throttles CPU</li>
+            </ul>
+
+            <h3>Battery-Friendly Animation Practices</h3>
+
+            <ul>
+                <li><strong>Auto-pause after 30 seconds</strong> - If user isn't interacting, pause animations</li>
+                <li><strong>Respect battery saver mode</strong> - Detect low power mode and disable animations</li>
+                <li><strong>Use lower frame rates</strong> - 30fps instead of 60fps reduces power by ~40%</li>
+                <li><strong>Limit simultaneous effects</strong> - Never run more than 2 animation types at once on mobile</li>
+            </ul>
+
+            <div class="code-block">
+// Simplified example of detecting battery state
+if ('getBattery' in navigator) {
+    navigator.getBattery().then(battery => {
+        if (battery.level < 0.2 || battery.charging === false) {
+            // Reduce or disable animations
+        }
+    });
+}
+            </div>
+
+            <h2>Mobile-Specific Animation Triggers</h2>
+
+            <p>Desktop and mobile users interact differently. Optimize your animation triggers for touch:</p>
+
+            <h3>Scroll-Triggered Animations</h3>
+
+            <p><strong>Best practice:</strong></p>
+            <ul>
+                <li>Trigger animations when element enters viewport</li>
+                <li>Use a threshold of 20% visibility (not 100%—triggers too late)</li>
+                <li>Animate once per session, not every time element scrolls into view</li>
+                <li>Keep scroll-triggered animations brief (0.5-1 second max)</li>
+            </ul>
+
+            <h3>Tap-Triggered Animations</h3>
+
+            <p><strong>Best practice:</strong></p>
+            <ul>
+                <li>Provide immediate visual feedback (within 100ms of tap)</li>
+                <li>Use haptic vibration for added feedback (if supported)</li>
+                <li>Don't require precise taps—make tap targets at least 44x44 pixels</li>
+                <li>Show animation on touchstart, not touchend (feels more responsive)</li>
+            </ul>
+
+            <h3>Page Load Animations</h3>
+
+            <p><strong>Best practice:</strong></p>
+            <ul>
+                <li>Delay by 1-2 seconds after page load (let content render first)</li>
+                <li>Start subtle, then increase intensity after 3-5 seconds</li>
+                <li>Never block or delay critical content rendering</li>
+            </ul>
+
+            <div class="cta-box">
+                <h3>⚡ Funitize: Zero-Config Mobile Optimization</h3>
+                <p>Stop worrying about device detection, particle scaling, and performance monitoring. Funitize handles it all automatically. $11.95/year for perfect mobile animations.</p>
+                <a href="../index.html#cta" class="cta-button">Get Funitize Now</a>
+            </div>
+
+            <h2>Debugging Mobile Animation Performance Issues</h2>
+
+            <p>If your animations are laggy on mobile, here's how to diagnose and fix:</p>
+
+            <h3>Issue 1: Choppy Frame Rate</h3>
+
+            <p><strong>Symptoms:</strong> Animations stutter, particles jump instead of flowing smoothly<br>
+            <strong>Likely cause:</strong> Too many particles or complex calculations<br>
+            <strong>Fix:</strong></p>
+
+            <ol>
+                <li>Reduce particle count by 50%</li>
+                <li>Simplify physics (remove collision detection, wind effects)</li>
+                <li>Check for memory leaks (use Chrome DevTools Memory profiler)</li>
+            </ol>
+
+            <h3>Issue 2: Delayed Start</h3>
+
+            <p><strong>Symptoms:</strong> Page loads but animations don't start for 3-5 seconds<br>
+            <strong>Likely cause:</strong> JavaScript bundle too large or render-blocking<br>
+            <strong>Fix:</strong></p>
+
+            <ol>
+                <li>Lazy load animation library (defer until after page interactive)</li>
+                <li>Use code splitting to separate animation code from critical path</li>
+                <li>Preload animation assets (images, sprites) with <code>&lt;link rel="preload"&gt;</code></li>
+            </ol>
+
+            <h3>Issue 3: Crashes on Older Devices</h3>
+
+            <p><strong>Symptoms:</strong> Page crashes or becomes unresponsive on 3+ year old phones<br>
+            <strong>Likely cause:</strong> Memory exhaustion or CPU overload<br>
+            <strong>Fix:</strong></p>
+
+            <ol>
+                <li>Implement device detection and disable animations on devices older than 2021</li>
+                <li>Set a hard limit on particle count (never exceed 40 on any device)</li>
+                <li>Use simpler particle shapes (circles instead of complex SVGs)</li>
+            </ol>
+
+            <h2>Mobile Animation Best Practices by Page Type</h2>
+
+            <h3>Homepage</h3>
+
+            <p><strong>Goal:</strong> Create wow moment without slowing first paint<br>
+            <strong>Strategy:</strong></p>
+
+            <ul>
+                <li>Delay animation start by 1.5 seconds (let hero content render first)</li>
+                <li>Use medium intensity (40-50 particles on mobile)</li>
+                <li>Focus animations on hero section, reduce/remove below fold</li>
+            </ul>
+
+            <h3>Product Pages</h3>
+
+            <p><strong>Goal:</strong> Add delight without distracting from product<br>
+            <strong>Strategy:</strong></p>
+
+            <ul>
+                <li>Subtle animations only (20-30 particles)</li>
+                <li>Trigger on product image zoom or add-to-cart click</li>
+                <li>Pause animations when video starts playing</li>
+            </ul>
+
+            <h3>Cart/Checkout</h3>
+
+            <p><strong>Goal:</strong> Maximum speed, minimal distraction<br>
+            <strong>Strategy:</strong></p>
+
+            <ul>
+                <li>Remove all background animations</li>
+                <li>Use brief celebratory effects only (when item added, when order placed)</li>
+                <li>Keep particle count ultra-low (10-15 maximum)</li>
+            </ul>
+
+            <h3>Blog/Content Pages</h3>
+
+            <p><strong>Goal:</strong> Enhance readability, not distract<br>
+            <strong>Strategy:</strong></p>
+
+            <ul>
+                <li>Pause animations while user is actively reading (detect scroll pauses)</li>
+                <li>Use very subtle effects (15-20 particles)</li>
+                <li>Consider disabling entirely on long-form content</li>
+            </ul>
+
+            <h2>Case Study: Mobile Optimization in Action</h2>
+
+            <p><strong>Store:</strong> Fashion e-commerce, 82% mobile traffic<br>
+            <strong>Problem:</strong> Beautiful desktop animations, but mobile users complained about lag<br>
+            <strong>Initial metrics:</strong></p>
+
+            <ul>
+                <li>Mobile load time: 4.2 seconds</li>
+                <li>FPS during animation: 18-22 (very choppy)</li>
+                <li>Bounce rate: 61%</li>
+            </ul>
+
+            <p><strong>Optimizations applied:</strong></p>
+
+            <ol>
+                <li>Reduced mobile particle count from 80 to 35</li>
+                <li>Removed rotation effects on Android devices</li>
+                <li>Implemented auto-pause when FPS dropped below 25</li>
+                <li>Lazy loaded animation library (deferred until after LCP)</li>
+                <li>Switched from complex emoji particles to simple shapes on budget devices</li>
+            </ol>
+
+            <p><strong>Results after optimization:</strong></p>
+
+            <ul>
+                <li>Mobile load time: 2.1 seconds ✅</li>
+                <li>FPS during animation: 55-60 (smooth) ✅</li>
+                <li>Bounce rate: 43% ✅</li>
+                <li>Mobile conversion rate: +31% ✅</li>
+            </ul>
+
+            <p>The store owner reported: "We kept the magic, lost the lag. Mobile sales went through the roof."</p>
+
+            <h2>Conclusion: Performance + Beauty = Mobile Success</h2>
+
+            <p>Mobile animation isn't about compromise—it's about smart optimization. With the right approach, you can deliver stunning visual experiences that run flawlessly on any device.</p>
+
+            <p>The key principles:</p>
+
+            <ul>
+                <li>Test on real devices, not just browser emulators</li>
+                <li>Reduce particle counts by 50-60% for mobile</li>
+                <li>Simplify physics and leverage GPU acceleration</li>
+                <li>Implement graceful degradation for older devices</li>
+                <li>Monitor performance in real-time and adjust dynamically</li>
+            </ul>
+
+            <p>Funitize is built mobile-first. Every optimization in this guide is baked into the platform. Automatic device detection, intelligent particle scaling, performance monitoring, battery-aware animations—it all just works.</p>
+
+            <p>For $11.95/year, you get beautiful animations that run perfectly on any device, from the latest iPhone to a 3-year-old budget Android.</p>
+
+            <div class="cta-box">
+                <h3>📱 Mobile-First Animations Made Easy</h3>
+                <p>Stop fighting with performance issues. Get Funitize and deliver flawless mobile animations from day one. 7-day free trial, $11.95/year after that.</p>
+                <a href="../index.html#cta" class="cta-button">Start Free Trial</a>
+                <p style="margin-top: 16px; font-size: 14px;">Join 10,000+ Shopify stores creating mobile-optimized experiences with Funitize</p>
+            </div>
+
+            <p style="margin-top: 64px; padding-top: 32px; border-top: 2px solid #eee; color: #666; font-style: italic;">Ready to give your mobile users the experience they deserve? Install Funitize today and see the difference optimized animations make.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="../assets/fun-logo.png?v=20260213" alt="Funitize" style="height: 40px;">
+                    </div>
+                    <p>Bring your Shopify store to life with delightful falling animations.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <a href="../index.html#features">Features</a>
+                    <a href="../index.html#animations">Animations</a>
+                    <a href="../docs.html">Documentation</a>
+                    <a href="https://apps.shopify.com/funitize" target="_blank">Shopify App Store</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <a href="../contact.html">Contact Us</a>
+                    <a href="../faq.html">FAQ</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="../blog.html">Blog</a>
+                    <a href="../index.html#animations">Animation Library</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="../privacy.html">Privacy Policy</a>
+                    <a href="../terms.html">Terms of Service</a>
+                    <a href="../refund.html">Refund Policy</a>
+                </div>
+            </div>
+            <div class="footer-social">
+                <a href="https://facebook.com/funitize" target="_blank" aria-label="Facebook"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                <a href="https://instagram.com/funitize" target="_blank" aria-label="Instagram"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Funitize. All rights reserved. Contact: <a href="mailto:funitize@gmail.com" style="color: var(--primary); text-decoration: none;">funitize@gmail.com</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

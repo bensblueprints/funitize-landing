@@ -1,10 +1,10 @@
 /* === CSS Variables === */
 :root {
-    --primary: #FFF500;
-    --secondary: #FFD700;
-    --accent-1: #FFC107;
-    --accent-2: #00D9FF;
-    --accent-3: #A855F7;
+    --primary: #5170FF;
+    --secondary: #FF66C4;
+    --accent-1: #5170FF;
+    --accent-2: #FF66C4;
+    --accent-3: #5170FF;
     --dark: #1a1a2e;
     --light: #ffffff;
     --gray-100: #f8f9fa;
@@ -13,7 +13,7 @@
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
     --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.15);
-    --shadow-glow: 0 0 40px rgba(255, 245, 0, 0.4);
+    --shadow-glow: 0 0 40px rgba(81, 112, 255, 0.4);
     --border-radius: 16px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -583,9 +583,10 @@ section {
 
 /* === Footer === */
 .footer {
-    background: var(--dark);
-    color: var(--light);
+    background: #ffffff;
+    color: var(--dark);
     padding: 60px 0 24px;
+    border-top: 1px solid var(--gray-200);
 }
 
 .footer-content {
@@ -597,7 +598,8 @@ section {
 
 .footer-brand p {
     margin-top: 12px;
-    opacity: 0.8;
+    opacity: 0.7;
+    color: var(--gray-700);
 }
 
 .footer-column h4 {
@@ -608,7 +610,7 @@ section {
 
 .footer-column a {
     display: block;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--gray-700);
     text-decoration: none;
     margin-bottom: 8px;
     transition: var(--transition);
@@ -620,10 +622,10 @@ section {
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--gray-200);
     padding-top: 24px;
     text-align: center;
-    opacity: 0.7;
+    color: var(--gray-700);
     font-size: 14px;
 }
 
@@ -641,14 +643,14 @@ section {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--light);
+    background: var(--gray-100);
+    color: var(--dark);
     transition: var(--transition);
 }
 
 .footer-social a:hover {
     background: var(--primary);
-    color: var(--dark);
+    color: var(--light);
     transform: translateY(-4px);
 }
 
