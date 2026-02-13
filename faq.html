@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Funitize</title>
+    <meta name="description" content="Frequently asked questions about Funitize - Get answers about pricing, installation, features, and more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260213">
+    <style>
+        .faq-page {
+            min-height: 100vh;
+            padding: 120px 0 80px;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .faq-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .faq-header h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            font-family: 'Fredoka', sans-serif;
+        }
+        .faq-header p {
+            font-size: 18px;
+            color: var(--gray-700);
+        }
+        .faq-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .faq-item:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+        .faq-question {
+            padding: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+        .faq-question h3 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 18px;
+            margin: 0;
+            color: var(--dark);
+        }
+        .faq-icon {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+            color: var(--primary);
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-answer-content {
+            padding: 0 24px 24px;
+            color: var(--gray-700);
+            line-height: 1.8;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        .faq-category {
+            margin-bottom: 48px;
+        }
+        .faq-category h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 28px;
+            margin-bottom: 24px;
+            color: var(--dark);
+        }
+        .still-have-questions {
+            background: linear-gradient(135deg, var(--primary), var(--accent-1));
+            padding: 48px;
+            border-radius: 24px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        .still-have-questions h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 32px;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+        .still-have-questions p {
+            font-size: 18px;
+            margin-bottom: 24px;
+            color: var(--dark);
+        }
+        .contact-button {
+            display: inline-block;
+            background: white;
+            color: var(--dark);
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .contact-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Canvas Background -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="assets/fun-logo.png?v=20260213" alt="Funitize" class="logo-image">
+            </a>
+            <nav class="nav">
+                <a href="index.html#features" class="nav-link">Features</a>
+                <a href="index.html#animations" class="nav-link">Animations</a>
+                <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+                <a href="index.html#cta" class="cta-button cta-button-small">Start Free Trial</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- FAQ Page -->
+    <section class="faq-page">
+        <div class="faq-container">
+            <div class="faq-header">
+                <h1>Frequently Asked Questions</h1>
+                <p>Find answers to common questions about Funitize</p>
+            </div>
+
+            <!-- General Questions -->
+            <div class="faq-category">
+                <h2>General</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What is Funitize?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Funitize is a Shopify app that adds magical falling animations to your online store. Choose from 64+ pre-made animations like snow, confetti, hearts, and fireworks, or upload your own custom images. It's designed to delight customers and make your store more engaging and memorable.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How long does it take to set up?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Less than 60 seconds! Simply install the app from the Shopify App Store, choose an animation, and activate it. No coding required. The animation will appear on your store instantly.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Will Funitize slow down my store?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            No. Funitize is optimized for performance and has zero impact on your store's loading speed. The animations use hardware-accelerated rendering and lazy loading. The entire script is less than 20KB, and it automatically throttles on mobile devices to preserve performance.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Does it work on mobile devices?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes! Funitize works perfectly on all devices. On mobile, animations are automatically optimized with reduced particle counts to ensure smooth performance and preserve battery life.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing & Plans -->
+            <div class="faq-category">
+                <h2>Pricing & Plans</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How much does Funitize cost?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Funitize costs just $12 per year with unlimited web traffic. This special pricing is limited to the first 1000 sign-ups, so grab your spot early!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Is there a free trial?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes! All new users get a 7-day free trial to test all features before committing to the annual plan.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Are there any hidden fees or traffic limits?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Absolutely not. $12/year includes unlimited traffic, unlimited animations, and all features. No surprises, no extra charges.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I cancel anytime?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes. You can cancel your subscription at any time from your Shopify admin. Your plan will remain active until the end of your billing period.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="faq-category">
+                <h2>Features</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How many animations do I get?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            You get access to our full library of 64+ pre-made animations, plus unlimited custom uploads. We regularly add new animations based on user requests and seasonal trends.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I upload my own images?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes! Upload any PNG or SVG image (under 500KB) to create completely custom falling animations. Perfect for your logo, products, or brand elements.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I schedule animations for specific dates?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Absolutely! Schedule animations to start and stop at specific dates and times. Perfect for holidays, sales events, product launches, and seasonal campaigns. Set it once and forget it.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I make animations clickable?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes! Turn any animation into a clickable call-to-action. Link to sale pages, collections, products, or external URLs. Great for promotions and driving traffic to specific pages.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I show different animations on different pages?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes! Target animations to specific pages: homepage only, product pages, collections, cart, or custom URLs. You can run multiple animations simultaneously on different pages.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical -->
+            <div class="faq-category">
+                <h2>Technical</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do I need coding skills?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Not at all! Funitize is 100% no-code. Everything is done through a simple dashboard with point-and-click controls.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Will it conflict with my theme?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Funitize works with all Shopify themes. It's designed to be completely non-intrusive and won't interfere with your theme's functionality or styling.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What if I switch themes?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Funitize continues to work automatically. All your animations, schedules, and settings are preserved when you change themes.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Is there an API for developers?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes! Advanced users can access our JavaScript API to programmatically control animations. Documentation is available in your dashboard.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support -->
+            <div class="faq-category">
+                <h2>Support</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I get help?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            We offer email support at support@funitize.com. We typically respond within 24 hours. You can also check our comprehensive documentation for step-by-step guides.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you offer installation help?</h3>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Installation is automatic when you add the app from the Shopify App Store. If you encounter any issues, our support team is happy to help you get set up.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Still Have Questions -->
+            <div class="still-have-questions">
+                <h2>Still Have Questions?</h2>
+                <p>Can't find what you're looking for? We're here to help!</p>
+                <a href="contact.html" class="contact-button">Contact Support</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img src="assets/fun-logo.png?v=20260213" alt="Funitize" class="logo-image">
+                </a>
+                <p>Make your Shopify store unforgettable.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <a href="index.html#features">Features</a>
+                    <a href="index.html#animations">Animations</a>
+                    <a href="index.html#how-it-works">How It Works</a>
+                    <a href="https://apps.shopify.com/funitize" target="_blank">Download App</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="docs.html">Documentation</a>
+                    <a href="faq.html">FAQ</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="refund.html">Refund Policy</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="blog.html">Blog</a>
+                    <a href="index.html#animations">Animation Library</a>
+                    <a href="https://apps.shopify.com/funitize" target="_blank">Shopify App Store</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-social">
+                <a href="https://twitter.com/funitize" target="_blank" aria-label="Twitter">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://facebook.com/funitize" target="_blank" aria-label="Facebook">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+                <a href="https://instagram.com/funitize" target="_blank" aria-label="Instagram">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="https://youtube.com/@funitize" target="_blank" aria-label="YouTube">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+            </div>
+            <p>&copy; 2025 Funitize. All rights reserved. Be fun. Don't be boring. 🎉</p>
+        </div>
+    </footer>
+
+    <script src="script.js?v=20260213"></script>
+    <script>
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const wasActive = item.classList.contains('active');
+
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('active');
+                });
+
+                // Open clicked item if it wasn't already active
+                if (!wasActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

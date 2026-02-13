@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - Funitize</title>
+    <meta name="description" content="Complete documentation for Funitize - Learn how to install, configure, and use magical falling animations in your Shopify store.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260213">
+    <style>
+        .docs-page {
+            min-height: 100vh;
+            padding: 120px 0 80px;
+        }
+        .docs-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .docs-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .docs-header h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            font-family: 'Fredoka', sans-serif;
+        }
+        .docs-header p {
+            font-size: 18px;
+            color: var(--gray-700);
+        }
+        .docs-content {
+            background: white;
+            padding: 48px;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        .docs-section {
+            margin-bottom: 48px;
+        }
+        .docs-section:last-child {
+            margin-bottom: 0;
+        }
+        .docs-section h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 32px;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+        .docs-section h3 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 24px;
+            margin: 24px 0 12px;
+            color: var(--dark);
+        }
+        .docs-section p {
+            line-height: 1.8;
+            color: var(--gray-700);
+            margin-bottom: 16px;
+        }
+        .docs-section ul, .docs-section ol {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+        .docs-section li {
+            margin-bottom: 8px;
+            line-height: 1.8;
+            color: var(--gray-700);
+        }
+        .code-block {
+            background: var(--gray-100);
+            padding: 16px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            margin: 16px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        .note {
+            background: #fff9e6;
+            border-left: 4px solid var(--primary);
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        .note strong {
+            color: var(--primary);
+        }
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: var(--dark);
+            border-radius: 50%;
+            font-weight: 700;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Canvas Background -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="assets/fun-logo.png?v=20260213" alt="Funitize" class="logo-image">
+            </a>
+            <nav class="nav">
+                <a href="index.html#features" class="nav-link">Features</a>
+                <a href="index.html#animations" class="nav-link">Animations</a>
+                <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+                <a href="index.html#cta" class="cta-button cta-button-small">Start Free Trial</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Documentation Page -->
+    <section class="docs-page">
+        <div class="docs-container">
+            <div class="docs-header">
+                <h1>Documentation</h1>
+                <p>Everything you need to know about setting up and using Funitize</p>
+            </div>
+
+            <div class="docs-content">
+                <!-- Installation -->
+                <div class="docs-section">
+                    <h2>📦 Installation</h2>
+                    <p>Getting started with Funitize is simple and takes less than 60 seconds.</p>
+
+                    <h3><span class="step-number">1</span>Install from Shopify App Store</h3>
+                    <ol>
+                        <li>Visit the <a href="https://apps.shopify.com/funitize" target="_blank">Funitize app page</a> on the Shopify App Store</li>
+                        <li>Click "Add app" to install Funitize to your store</li>
+                        <li>Approve the app permissions when prompted</li>
+                        <li>You'll be redirected to the Funitize dashboard</li>
+                    </ol>
+
+                    <h3><span class="step-number">2</span>Choose Your Plan</h3>
+                    <p>Select the plan that's right for you:</p>
+                    <ul>
+                        <li><strong>Annual Plan:</strong> $12/year - Unlimited animations, unlimited traffic (Limited to first 1000 sign-ups)</li>
+                    </ul>
+
+                    <div class="note">
+                        <strong>Note:</strong> All plans include access to our full library of 64+ animations, custom animation uploads, scheduling features, and priority support.
+                    </div>
+                </div>
+
+                <!-- Quick Start -->
+                <div class="docs-section">
+                    <h2>🚀 Quick Start Guide</h2>
+
+                    <h3>Creating Your First Animation</h3>
+                    <ol>
+                        <li><strong>Navigate to Dashboard:</strong> After installation, you'll see the Funitize dashboard</li>
+                        <li><strong>Click "New Animation":</strong> This opens the animation creator</li>
+                        <li><strong>Select Animation Type:</strong> Choose from:
+                            <ul>
+                                <li>Snow ❄️</li>
+                                <li>Confetti 🎉</li>
+                                <li>Hearts 💖</li>
+                                <li>Fireworks 🎆</li>
+                                <li>And 60+ more options!</li>
+                            </ul>
+                        </li>
+                        <li><strong>Customize Settings:</strong>
+                            <ul>
+                                <li>Animation speed (slow, medium, fast)</li>
+                                <li>Particle count (light, normal, heavy)</li>
+                                <li>Colors (if applicable)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Activate:</strong> Toggle the animation on to see it live on your store</li>
+                    </ol>
+                </div>
+
+                <!-- Features -->
+                <div class="docs-section">
+                    <h2>✨ Features</h2>
+
+                    <h3>Custom Animations</h3>
+                    <p>Upload your own images to create truly unique falling animations:</p>
+                    <ol>
+                        <li>Click "Upload Custom Animation"</li>
+                        <li>Select an image from your computer (PNG recommended, max 500KB)</li>
+                        <li>The image will fall from the top of your store</li>
+                        <li>Customize size, speed, and frequency</li>
+                    </ol>
+
+                    <div class="note">
+                        <strong>Best Practices:</strong> Use transparent PNG images for best results. Recommended size: 50x50 to 200x200 pixels.
+                    </div>
+
+                    <h3>Clickable Popups (CTAs)</h3>
+                    <p>Turn your animations into interactive call-to-actions:</p>
+                    <ol>
+                        <li>Enable "Clickable Popup" when creating an animation</li>
+                        <li>Set the click destination URL (e.g., /collections/sale)</li>
+                        <li>Add optional text overlay on the animation</li>
+                        <li>Choose popup frequency (every animation or random)</li>
+                    </ol>
+
+                    <h3>Scheduling</h3>
+                    <p>Plan your animations ahead of time for holidays, sales, and special events:</p>
+                    <ol>
+                        <li>Create your animation</li>
+                        <li>Click "Schedule" instead of "Activate Now"</li>
+                        <li>Set start date and time</li>
+                        <li>Set end date and time (optional)</li>
+                        <li>Save - the animation will activate automatically</li>
+                    </ol>
+
+                    <p><strong>Example:</strong> Schedule snowfall for December 1st - December 25th, hearts for Valentine's week, and pumpkins for Halloween.</p>
+
+                    <h3>Page Targeting</h3>
+                    <p>Show different animations on different pages:</p>
+                    <ul>
+                        <li><strong>All Pages:</strong> Animation appears site-wide</li>
+                        <li><strong>Homepage Only:</strong> Only on your main landing page</li>
+                        <li><strong>Product Pages:</strong> Only on /products/* pages</li>
+                        <li><strong>Collections:</strong> Only on collection listing pages</li>
+                        <li><strong>Cart Page:</strong> Only on the cart/checkout</li>
+                        <li><strong>Custom URL:</strong> Enter specific URLs</li>
+                    </ul>
+                </div>
+
+                <!-- Performance -->
+                <div class="docs-section">
+                    <h2>⚡ Performance & Best Practices</h2>
+
+                    <h3>Does Funitize Slow Down My Store?</h3>
+                    <p>No. Funitize is optimized for performance:</p>
+                    <ul>
+                        <li>Animations use hardware-accelerated CSS and Canvas</li>
+                        <li>Lazy loading prevents animations from affecting page load time</li>
+                        <li>Automatic throttling on mobile devices</li>
+                        <li>Total script size: <20KB (minified and gzipped)</li>
+                    </ul>
+
+                    <h3>Recommendations</h3>
+                    <ul>
+                        <li><strong>Don't overdo it:</strong> 1-2 active animations work best</li>
+                        <li><strong>Match your brand:</strong> Use animations that fit your store's vibe</li>
+                        <li><strong>Seasonal relevance:</strong> Rotate animations with seasons/holidays</li>
+                        <li><strong>Mobile consideration:</strong> Preview on mobile - heavy animations auto-reduce</li>
+                    </ul>
+                </div>
+
+                <!-- Troubleshooting -->
+                <div class="docs-section">
+                    <h2>🔧 Troubleshooting</h2>
+
+                    <h3>Animation Not Showing</h3>
+                    <ul>
+                        <li>Check that the animation is toggled "Active" in your dashboard</li>
+                        <li>Verify page targeting - it might be set to show on specific pages only</li>
+                        <li>Clear your browser cache (Cmd+Shift+R or Ctrl+Shift+R)</li>
+                        <li>Check if any conflicting apps are blocking scripts</li>
+                    </ul>
+
+                    <h3>Animation Looks Different on Mobile</h3>
+                    <p>This is intentional. Funitize automatically reduces particle count and animation intensity on mobile devices to preserve performance and battery life.</p>
+
+                    <h3>Custom Image Not Working</h3>
+                    <ul>
+                        <li>Ensure image is under 500KB</li>
+                        <li>Use PNG or SVG format (JPG works but no transparency)</li>
+                        <li>Verify image is not corrupted by re-uploading</li>
+                    </ul>
+
+                    <h3>Still Having Issues?</h3>
+                    <p>Contact our support team at <a href="mailto:support@funitize.com">support@funitize.com</a> - we typically respond within 24 hours.</p>
+                </div>
+
+                <!-- API -->
+                <div class="docs-section">
+                    <h2>🛠️ Developer API (Advanced)</h2>
+                    <p>For advanced users and developers, Funitize can be controlled programmatically:</p>
+
+                    <div class="code-block">
+// Trigger animation manually<br>
+Funitize.start('confetti');<br><br>
+
+// Stop all animations<br>
+Funitize.stopAll();<br><br>
+
+// Change animation on the fly<br>
+Funitize.switch('snow');
+                    </div>
+
+                    <p>Full API documentation is available for Pro plan users in the developer section of your dashboard.</p>
+                </div>
+
+                <!-- Updates -->
+                <div class="docs-section">
+                    <h2>🔔 Updates & Changelog</h2>
+                    <p>Funitize is regularly updated with new features and animations. Check our <a href="blog.html">blog</a> for the latest updates, or follow us on social media.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img src="assets/fun-logo.png?v=20260213" alt="Funitize" class="logo-image">
+                </a>
+                <p>Make your Shopify store unforgettable.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <a href="index.html#features">Features</a>
+                    <a href="index.html#animations">Animations</a>
+                    <a href="index.html#how-it-works">How It Works</a>
+                    <a href="https://apps.shopify.com/funitize" target="_blank">Download App</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="docs.html">Documentation</a>
+                    <a href="faq.html">FAQ</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="refund.html">Refund Policy</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="blog.html">Blog</a>
+                    <a href="index.html#animations">Animation Library</a>
+                    <a href="https://apps.shopify.com/funitize" target="_blank">Shopify App Store</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-social">
+                <a href="https://twitter.com/funitize" target="_blank" aria-label="Twitter">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://facebook.com/funitize" target="_blank" aria-label="Facebook">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+                <a href="https://instagram.com/funitize" target="_blank" aria-label="Instagram">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="https://youtube.com/@funitize" target="_blank" aria-label="YouTube">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+            </div>
+            <p>&copy; 2025 Funitize. All rights reserved. Be fun. Don't be boring. 🎉</p>
+        </div>
+    </footer>
+
+    <script src="script.js?v=20260213"></script>
+</body>
+</html>
