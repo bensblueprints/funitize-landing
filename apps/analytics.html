@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funitize Analytics - Track Animation Performance & Sales Impact</title>
+    <meta name="description" content="See exactly how your Funitize animations impact sales. Real-time tracking, conversion metrics, revenue attribution, and ROI reports for every animation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css?v=20260214">
+    <style>
+        .app-hero {
+            background: linear-gradient(135deg, #5170FF 0%, #FF66C4 100%);
+            padding: 120px 0 80px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-hero::before {
+            content: '📊📈📉📊📈📉';
+            position: absolute;
+            font-size: 120px;
+            opacity: 0.1;
+            top: -20px;
+            right: -40px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Righteous', sans-serif;
+            font-size: 56px;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 20px;
+            margin-bottom: 32px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+        }
+
+        .stat-number {
+            font-family: 'Righteous', sans-serif;
+            font-size: 36px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .hero-mockup {
+            position: relative;
+        }
+
+        .mockup-container {
+            background: white;
+            padding: 32px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .mockup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .mockup-title {
+            font-family: 'Righteous', sans-serif;
+            color: #1E293B;
+            font-size: 24px;
+        }
+
+        .mockup-badge {
+            background: linear-gradient(135deg, #22C55E 0%, #10B981 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .metric-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: #64748B;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-family: 'Righteous', sans-serif;
+            font-size: 32px;
+            color: #5170FF;
+        }
+
+        .metric-change {
+            font-size: 13px;
+            color: #22C55E;
+            margin-top: 4px;
+        }
+
+        .chart-placeholder {
+            background: linear-gradient(135deg, #5170FF 0%, #FF66C4 100%);
+            height: 120px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .features-section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Righteous', sans-serif;
+            font-size: 48px;
+            color: #1E293B;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 20px;
+            color: #64748B;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .feature-item {
+            padding: 40px;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(81, 112, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(81, 112, 255, 0.2);
+        }
+
+        .feature-icon-big {
+            font-size: 64px;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .feature-item h3 {
+            font-family: 'Righteous', sans-serif;
+            font-size: 24px;
+            color: #1E293B;
+            margin-bottom: 16px;
+        }
+
+        .feature-item p {
+            color: #64748B;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .check-icon {
+            color: #22C55E;
+            font-size: 18px;
+        }
+
+        .pricing-section {
+            background: linear-gradient(180deg, rgba(81, 112, 255, 0.05) 0%, rgba(255, 102, 196, 0.05) 100%);
+            padding: 100px 0;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 48px;
+            border-radius: 32px;
+            box-shadow: 0 20px 60px rgba(81, 112, 255, 0.15);
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .price-tag {
+            font-family: 'Righteous', sans-serif;
+            font-size: 64px;
+            color: #5170FF;
+            margin-bottom: 16px;
+        }
+
+        .price-tag span {
+            font-size: 24px;
+            color: #64748B;
+        }
+
+        .price-description {
+            font-size: 18px;
+            color: #64748B;
+            margin-bottom: 32px;
+        }
+
+        .early-bird-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFB800 0%, #FF66C4 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            font-size: 14px;
+        }
+
+        .waitlist-section {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .waitlist-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 48px;
+            border-radius: 32px;
+            box-shadow: 0 20px 60px rgba(81, 112, 255, 0.15);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid #E2E8F0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #5170FF;
+            box-shadow: 0 0 0 4px rgba(81, 112, 255, 0.1);
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #5170FF 0%, #FF66C4 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(81, 112, 255, 0.4);
+        }
+
+        .waitlist-count-display {
+            margin-top: 24px;
+            font-size: 14px;
+            color: #64748B;
+        }
+
+        .waitlist-count-display strong {
+            color: #5170FF;
+            font-size: 18px;
+        }
+
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-text h1 {
+                font-size: 40px;
+            }
+
+            .metric-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="../index.html" class="logo">
+                <img src="../assets/fun-logo.png?v=20260213" alt="Funitize" class="logo-image">
+            </a>
+            <nav class="nav">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../apps.html" class="nav-link">All Apps</a>
+                <a href="../blog.html" class="nav-link">Blog</a>
+                <a href="#waitlist" class="cta-button cta-button-small">Join Waitlist</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="app-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>📊 Funitize Analytics</h1>
+                    <p>Finally see the real impact of your animations. Track clicks, conversions, revenue, and ROI from every animation you run. Make data-driven decisions to maximize sales.</p>
+                    <a href="#waitlist" class="cta-button cta-button-large">Join the Waitlist</a>
+
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">1,247</span>
+                            <span class="stat-label">On Waitlist</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">Q2 2026</span>
+                            <span class="stat-label">Launch Date</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">50% OFF</span>
+                            <span class="stat-label">Early Bird</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-mockup">
+                    <div class="mockup-container">
+                        <div class="mockup-header">
+                            <div class="mockup-title">Dashboard Overview</div>
+                            <div class="mockup-badge">Live Data</div>
+                        </div>
+
+                        <div class="metric-cards">
+                            <div class="metric-card">
+                                <div class="metric-label">Total Clicks</div>
+                                <div class="metric-value">12,847</div>
+                                <div class="metric-change">↑ 24% vs last week</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Conversions</div>
+                                <div class="metric-value">1,094</div>
+                                <div class="metric-change">↑ 31% vs last week</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Revenue Generated</div>
+                                <div class="metric-value">$8,423</div>
+                                <div class="metric-change">↑ 42% vs last week</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">ROI</div>
+                                <div class="metric-value">703%</div>
+                                <div class="metric-change">↑ 18% vs last week</div>
+                            </div>
+                        </div>
+
+                        <div class="chart-placeholder">
+                            📈 Real-time Conversion Chart
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Everything You Need to Optimize</h2>
+                <p>Powerful analytics that actually help you make money</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="feature-icon-big">📊</span>
+                    <h3>Real-Time Tracking</h3>
+                    <p>See every click, interaction, and conversion as it happens. No delays, no waiting for reports.</p>
+                    <ul class="feature-list">
+                        <li><span class="check-icon">✓</span> Live visitor tracking</li>
+                        <li><span class="check-icon">✓</span> Instant click notifications</li>
+                        <li><span class="check-icon">✓</span> Real-time revenue updates</li>
+                        <li><span class="check-icon">✓</span> Active animation monitor</li>
+                    </ul>
+                </div>
+
+                <div class="feature-item">
+                    <span class="feature-icon-big">💰</span>
+                    <h3>Revenue Attribution</h3>
+                    <p>Know exactly which animations are making you money. Track sales from click to checkout.</p>
+                    <ul class="feature-list">
+                        <li><span class="check-icon">✓</span> Per-animation revenue</li>
+                        <li><span class="check-icon">✓</span> Cart value tracking</li>
+                        <li><span class="check-icon">✓</span> Conversion funnel analysis</li>
+                        <li><span class="check-icon">✓</span> Customer journey mapping</li>
+                    </ul>
+                </div>
+
+                <div class="feature-item">
+                    <span class="feature-icon-big">🔥</span>
+                    <h3>Heatmaps & Click Tracking</h3>
+                    <p>See where customers are clicking and engaging. Optimize animation placement for maximum impact.</p>
+                    <ul class="feature-list">
+                        <li><span class="check-icon">✓</span> Visual heatmaps</li>
+                        <li><span class="check-icon">✓</span> Scroll depth tracking</li>
+                        <li><span class="check-icon">✓</span> Engagement zones</li>
+                        <li><span class="check-icon">✓</span> Click density maps</li>
+                    </ul>
+                </div>
+
+                <div class="feature-item">
+                    <span class="feature-icon-big">🧪</span>
+                    <h3>A/B Test Results</h3>
+                    <p>Compare different animations side-by-side. See which variants drive the most sales.</p>
+                    <ul class="feature-list">
+                        <li><span class="check-icon">✓</span> Statistical significance</li>
+                        <li><span class="check-icon">✓</span> Winner auto-detection</li>
+                        <li><span class="check-icon">✓</span> Multi-variant testing</li>
+                        <li><span class="check-icon">✓</span> Conversion rate comparison</li>
+                    </ul>
+                </div>
+
+                <div class="feature-item">
+                    <span class="feature-icon-big">📈</span>
+                    <h3>Performance Reports</h3>
+                    <p>Beautiful, actionable reports delivered weekly. Share with your team or clients.</p>
+                    <ul class="feature-list">
+                        <li><span class="check-icon">✓</span> Automated weekly emails</li>
+                        <li><span class="check-icon">✓</span> Exportable PDF reports</li>
+                        <li><span class="check-icon">✓</span> Custom date ranges</li>
+                        <li><span class="check-icon">✓</span> Team sharing</li>
+                    </ul>
+                </div>
+
+                <div class="feature-item">
+                    <span class="feature-icon-big">🎯</span>
+                    <h3>Conversion Metrics</h3>
+                    <p>Track what matters: conversion rates, average order value, and customer lifetime value.</p>
+                    <ul class="feature-list">
+                        <li><span class="check-icon">✓</span> Click-through rates</li>
+                        <li><span class="check-icon">✓</span> Conversion rates</li>
+                        <li><span class="check-icon">✓</span> Average order value</li>
+                        <li><span class="check-icon">✓</span> Time to purchase</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Get 50% off by joining the waitlist now</p>
+            </div>
+
+            <div class="pricing-card">
+                <div class="early-bird-badge">⚡ EARLY BIRD SPECIAL - 50% OFF</div>
+                <div class="price-tag">$9.95<span>/month</span></div>
+                <div class="price-description">Regular price: $19.95/month after launch</div>
+
+                <ul class="feature-list" style="margin-bottom: 32px;">
+                    <li><span class="check-icon">✓</span> Unlimited animation tracking</li>
+                    <li><span class="check-icon">✓</span> Real-time analytics dashboard</li>
+                    <li><span class="check-icon">✓</span> Revenue attribution</li>
+                    <li><span class="check-icon">✓</span> Heatmaps & click tracking</li>
+                    <li><span class="check-icon">✓</span> A/B testing analytics</li>
+                    <li><span class="check-icon">✓</span> Weekly performance reports</li>
+                    <li><span class="check-icon">✓</span> Export data (CSV, PDF)</li>
+                    <li><span class="check-icon">✓</span> Priority support</li>
+                </ul>
+
+                <a href="#waitlist" class="cta-button cta-button-large">Lock In 50% Off Forever</a>
+                <p style="margin-top: 16px; color: #64748B; font-size: 13px;">🔥 Only 253 early bird spots left</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist -->
+    <section id="waitlist" class="waitlist-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Join 1,247 People on the Waitlist</h2>
+                <p>Be the first to know when Funitize Analytics launches</p>
+            </div>
+
+            <div class="waitlist-form">
+                <form id="waitlist-form" onsubmit="event.preventDefault(); alert('Thank you for joining the waitlist! We\'ll notify you when Funitize Analytics launches.');">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" id="name" class="form-input" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" class="form-input" placeholder="john@yourstore.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="store" class="form-label">Shopify Store URL (Optional)</label>
+                        <input type="url" id="store" class="form-input" placeholder="https://yourstore.myshopify.com">
+                    </div>
+
+                    <button type="submit" class="submit-button">Join Waitlist & Get 50% Off</button>
+
+                    <div class="waitlist-count-display">
+                        🎉 <strong>1,247 people</strong> ahead of you
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="../index.html" class="logo">
+                    <img src="../assets/fun-logo.png?v=20260213" alt="Funitize" class="logo-image">
+                </a>
+                <p>Make your Shopify store unforgettable.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <a href="../index.html#features">Features</a>
+                    <a href="../apps.html">All Apps</a>
+                    <a href="../index.html#how-it-works">How It Works</a>
+                    <a href="https://apps.shopify.com/funitize" target="_blank">Download App</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <a href="../contact.html">Contact Us</a>
+                    <a href="../docs.html">Documentation</a>
+                    <a href="../faq.html">FAQ</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="../privacy.html">Privacy Policy</a>
+                    <a href="../terms.html">Terms of Service</a>
+                    <a href="../refund.html">Refund Policy</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="../blog.html">Blog</a>
+                    <a href="../apps.html">App Ecosystem</a>
+                    <a href="https://apps.shopify.com/funitize" target="_blank">Shopify App Store</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-social">
+                <a href="https://facebook.com/funitize" target="_blank" aria-label="Facebook">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+                <a href="https://instagram.com/funitize" target="_blank" aria-label="Instagram">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+            </div>
+            <p style="text-align: center; margin: 16px 0 8px;">&copy; 2026 Funitize. All rights reserved. Contact: <a href="mailto:funitize@gmail.com" style="color: var(--primary); text-decoration: none;">funitize@gmail.com</a></p>
+            <p style="text-align: center; font-size: 13px; color: rgba(255, 255, 255, 0.6); margin: 0;">Web Design and Custom Development Done by <a href="https://advancedmarketing.co" target="_blank" style="color: #5170FF; text-decoration: none;">AdvancedMarketing.co</a>. Want a website for your app or SaaS product? <a href="mailto:ben@justfeatured.com" style="color: #5170FF; text-decoration: none;">Contact us</a>.</p>
+        </div>
+    </footer>
+</body>
+</html>

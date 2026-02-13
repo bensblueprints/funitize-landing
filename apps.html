@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funitize App Ecosystem - Complete Suite for Shopify Success</title>
+    <meta name="description" content="Explore the complete Funitize app ecosystem. From animations to analytics, popups to exit intent - everything you need to maximize your Shopify store's potential.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260214">
+    <style>
+        .apps-hero {
+            background: linear-gradient(135deg, #5170FF 0%, #FF66C4 100%);
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .apps-hero h1 {
+            font-family: 'Righteous', sans-serif;
+            font-size: 56px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .apps-hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.95;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 32px;
+            padding: 80px 0;
+        }
+
+        .app-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(81, 112, 255, 0.12);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .app-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(81, 112, 255, 0.24);
+        }
+
+        .app-card.available {
+            border: 3px solid #22C55E;
+        }
+
+        .app-card.coming-soon {
+            border: 3px solid #FF66C4;
+        }
+
+        .app-card.in-development {
+            border: 3px solid #FFB800;
+        }
+
+        .app-status {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 10;
+        }
+
+        .app-status.available {
+            background: #22C55E;
+            color: white;
+        }
+
+        .app-status.coming-soon {
+            background: #FF66C4;
+            color: white;
+        }
+
+        .app-status.in-development {
+            background: #FFB800;
+            color: white;
+        }
+
+        .app-header {
+            background: linear-gradient(135deg, #5170FF 0%, #FF66C4 100%);
+            padding: 60px 32px;
+            text-align: center;
+            position: relative;
+        }
+
+        .app-icon {
+            font-size: 80px;
+            margin-bottom: 16px;
+            display: block;
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+        }
+
+        .app-header h3 {
+            font-family: 'Righteous', sans-serif;
+            font-size: 32px;
+            color: white;
+            margin: 0 0 12px;
+        }
+
+        .app-tagline {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .app-body {
+            padding: 32px;
+        }
+
+        .app-description {
+            color: #64748B;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            font-size: 15px;
+        }
+
+        .app-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 32px;
+        }
+
+        .app-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #E2E8F0;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+        }
+
+        .app-features li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-check {
+            color: #22C55E;
+            font-size: 18px;
+        }
+
+        .app-cta {
+            display: block;
+            text-align: center;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #5170FF 0%, #FF66C4 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .app-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(81, 112, 255, 0.4);
+        }
+
+        .app-cta.disabled {
+            background: #94A3B8;
+            cursor: not-allowed;
+        }
+
+        .app-cta.disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .notify-button {
+            background: linear-gradient(135deg, #FF66C4 0%, #FFB800 100%);
+        }
+
+        .waitlist-count {
+            text-align: center;
+            margin-top: 12px;
+            color: #64748B;
+            font-size: 13px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin: 80px 0 40px;
+        }
+
+        .section-header h2 {
+            font-family: 'Righteous', sans-serif;
+            font-size: 42px;
+            color: #1E293B;
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: #64748B;
+            font-size: 18px;
+        }
+
+        .ecosystem-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin: 60px 0;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(81, 112, 255, 0.05) 0%, rgba(255, 102, 196, 0.05) 100%);
+            border-radius: 24px;
+        }
+
+        .stat-box {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Righteous', sans-serif;
+            font-size: 48px;
+            color: #5170FF;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: #64748B;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 768px) {
+            .apps-hero h1 {
+                font-size: 36px;
+            }
+
+            .apps-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                padding: 40px 0;
+            }
+
+            .section-header h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="/" class="logo">
+                <img src="assets/fun-logo.png?v=20260213" alt="Funitize" class="logo-image">
+            </a>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="apps.html" class="nav-link">Apps</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="#cta" class="cta-button cta-button-small">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="apps-hero">
+        <div class="container">
+            <h1>The Complete Funitize Ecosystem</h1>
+            <p>Transform your Shopify store with our suite of powerful apps. From animations to analytics, we've got everything you need to engage customers and boost sales.</p>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section>
+        <div class="container">
+            <div class="ecosystem-stats">
+                <div class="stat-box">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">Total Apps</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">Available Now</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Coming Soon</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">In Development</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Available Now -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2>✅ Available Now</h2>
+                <p>Download and start using today</p>
+            </div>
+
+            <div class="apps-grid">
+                <div class="app-card available">
+                    <div class="app-status available">Available</div>
+                    <div class="app-header">
+                        <span class="app-icon">🎉</span>
+                        <h3>Funitize</h3>
+                        <p class="app-tagline">Magical Store Animations</p>
+                    </div>
+                    <div class="app-body">
+                        <p class="app-description">Transform your Shopify store with unlimited falling animations. Snow, fireworks, hearts, and custom effects that delight customers and drive sales.</p>
+                        <ul class="app-features">
+                            <li><span class="feature-check">✓</span> Unlimited animations</li>
+                            <li><span class="feature-check">✓</span> Custom image uploads</li>
+                            <li><span class="feature-check">✓</span> Schedule for holidays</li>
+                            <li><span class="feature-check">✓</span> Clickable popups with CTAs</li>
+                            <li><span class="feature-check">✓</span> 1-minute setup</li>
+                        </ul>
+                        <a href="index.html#cta" class="app-cta">Get Funitize - $11.95/Year</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2>🚀 Coming Soon</h2>
+                <p>Join the waitlist to get early access</p>
+            </div>
+
+            <div class="apps-grid">
+                <!-- Analytics -->
+                <div class="app-card coming-soon">
+                    <div class="app-status coming-soon">Coming Soon</div>
+                    <div class="app-header">
+                        <span class="app-icon">📊</span>
+                        <h3>Funitize Analytics</h3>
+                        <p class="app-tagline">Track What Works</p>
+                    </div>
+                    <div class="app-body">
+                        <p class="app-description">Deep insights into how your animations impact sales. See click-through rates, conversion metrics, and ROI from every animation you run.</p>
+                        <ul class="app-features">
+                            <li><span class="feature-check">✓</span> Real-time engagement tracking</li>
+                            <li><span class="feature-check">✓</span> Conversion attribution</li>
+                            <li><span class="feature-check">✓</span> A/B test results</li>
+                            <li><span class="feature-check">✓</span> Revenue impact reports</li>
+                            <li><span class="feature-check">✓</span> Heatmaps & click tracking</li>
+                        </ul>
+                        <a href="apps/analytics.html" class="app-cta notify-button">View Preview & Join Waitlist</a>
+                        <p class="waitlist-count">🔥 1,247 people on waitlist</p>
+                    </div>
+                </div>
+
+                <!-- Popup Builder Pro -->
+                <div class="app-card coming-soon">
+                    <div class="app-status coming-soon">Coming Soon</div>
+                    <div class="app-header">
+                        <span class="app-icon">💬</span>
+                        <h3>Popup Builder Pro</h3>
+                        <p class="app-tagline">Advanced Popups</p>
+                    </div>
+                    <div class="app-body">
+                        <p class="app-description">Create stunning, high-converting popups with our drag-and-drop builder. Email capture, discount offers, announcements - all beautifully animated.</p>
+                        <ul class="app-features">
+                            <li><span class="feature-check">✓</span> Drag-and-drop builder</li>
+                            <li><span class="feature-check">✓</span> Exit intent triggers</li>
+                            <li><span class="feature-check">✓</span> Time-based displays</li>
+                            <li><span class="feature-check">✓</span> Mobile-optimized</li>
+                            <li><span class="feature-check">✓</span> Email integration</li>
+                        </ul>
+                        <a href="apps/popup-builder.html" class="app-cta notify-button">View Preview & Join Waitlist</a>
+                        <p class="waitlist-count">🔥 892 people on waitlist</p>
+                    </div>
+                </div>
+
+                <!-- Video Backgrounds -->
+                <div class="app-card coming-soon">
+                    <div class="app-status coming-soon">Coming Soon</div>
+                    <div class="app-header">
+                        <span class="app-icon">🎬</span>
+                        <h3>Video Backgrounds</h3>
+                        <p class="app-tagline">Cinematic Product Pages</p>
+                    </div>
+                    <div class="app-body">
+                        <p class="app-description">Add stunning video backgrounds to your product pages, collections, and homepage. Make your store feel premium and immersive.</p>
+                        <ul class="app-features">
+                            <li><span class="feature-check">✓</span> Full-screen video backgrounds</li>
+                            <li><span class="feature-check">✓</span> Auto-optimize for mobile</li>
+                            <li><span class="feature-check">✓</span> Loop seamlessly</li>
+                            <li><span class="feature-check">✓</span> Performance-optimized</li>
+                            <li><span class="feature-check">✓</span> Page-specific targeting</li>
+                        </ul>
+                        <a href="apps/video-backgrounds.html" class="app-cta notify-button">View Preview & Join Waitlist</a>
+                        <p class="waitlist-count">🔥 673 people on waitlist</p>
+                    </div>
+                </div>
+
+                <!-- Sound FX -->
+                <div class="app-card coming-soon">
+                    <div class="app-status coming-soon">Coming Soon</div>
+                    <div class="app-header">
+                        <span class="app-icon">🔊</span>
+                        <h3>Sound FX</h3>
+                        <p class="app-tagline">Audio Engagement</p>
+                    </div>
+                    <div class="app-body">
+                        <p class="app-description">Add delightful sound effects to your animations, buttons, and interactions. Create a truly immersive shopping experience.</p>
+                        <ul class="app-features">
+                            <li><span class="feature-check">✓</span> 500+ sound effects library</li>
+                            <li><span class="feature-check">✓</span> Upload custom sounds</li>
+                            <li><span class="feature-check">✓</span> Trigger on clicks/hovers</li>
+                            <li><span class="feature-check">✓</span> Volume controls</li>
+                            <li><span class="feature-check">✓</span> Auto-mute options</li>
+                        </ul>
+                        <a href="apps/sound-fx.html" class="app-cta notify-button">View Preview & Join Waitlist</a>
+                        <p class="waitlist-count">🔥 521 people on waitlist</p>
+                    </div>
+                </div>
+
+                <!-- Exit Intent -->
+                <div class="app-card coming-soon">
+                    <div class="app-status coming-soon">Coming Soon</div>
+                    <div class="app-header">
+                        <span class="app-icon">🎯</span>
+                        <h3>Exit Intent Pro</h3>
+                        <p class="app-tagline">Recover Lost Sales</p>
+                    </div>
+                    <div class="app-body">
+                        <p class="app-description">Detect when visitors are about to leave and show them irresistible offers. Recover abandoned carts with perfectly timed animated offers.</p>
+                        <ul class="app-features">
+                            <li><span class="feature-check">✓</span> Smart exit detection</li>
+                            <li><span class="feature-check">✓</span> Discount code automation</li>
+                            <li><span class="feature-check">✓</span> Custom offer templates</li>
+                            <li><span class="feature-check">✓</span> Frequency controls</li>
+                            <li><span class="feature-check">✓</span> Cart value targeting</li>
+                        </ul>
+                        <a href="apps/exit-intent.html" class="app-cta notify-button">View Preview & Join Waitlist</a>
+                        <p class="waitlist-count">🔥 1,109 people on waitlist</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- In Development -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2>🛠️ In Development</h2>
+                <p>Currently being built by our team</p>
+            </div>
+
+            <div class="apps-grid">
+                <!-- AB Testing -->
+                <div class="app-card in-development">
+                    <div class="app-status in-development">In Development</div>
+                    <div class="app-header">
+                        <span class="app-icon">🧪</span>
+                        <h3>AB Testing Suite</h3>
+                        <p class="app-tagline">Optimize Everything</p>
+                    </div>
+                    <div class="app-body">
+                        <p class="app-description">Test different animations, popups, and offers to find what converts best. Make data-driven decisions to maximize your revenue.</p>
+                        <ul class="app-features">
+                            <li><span class="feature-check">✓</span> Split test animations</li>
+                            <li><span class="feature-check">✓</span> Statistical significance</li>
+                            <li><span class="feature-check">✓</span> Multi-variant testing</li>
+                            <li><span class="feature-check">✓</span> Auto-winner selection</li>
+                            <li><span class="feature-check">✓</span> Revenue tracking</li>
+                        </ul>
+                        <a href="apps/ab-testing.html" class="app-cta notify-button">View Roadmap & Get Notified</a>
+                        <p class="waitlist-count">Expected: Q2 2026</p>
+                    </div>
+                </div>
+
+                <!-- Countdown Timers -->
+                <div class="app-card in-development">
+                    <div class="app-status in-development">In Development</div>
+                    <div class="app-header">
+                        <span class="app-icon">⏰</span>
+                        <h3>Countdown Timers</h3>
+                        <p class="app-tagline">Create Urgency</p>
+                    </div>
+                    <div class="app-body">
+                        <p class="app-description">Beautiful, animated countdown timers for sales, launches, and limited offers. Create FOMO and drive urgency with style.</p>
+                        <ul class="app-features">
+                            <li><span class="feature-check">✓</span> Animated countdown displays</li>
+                            <li><span class="feature-check">✓</span> Multiple timer styles</li>
+                            <li><span class="feature-check">✓</span> Scheduled campaigns</li>
+                            <li><span class="feature-check">✓</span> Evergreen timers</li>
+                            <li><span class="feature-check">✓</span> Page-specific placement</li>
+                        </ul>
+                        <a href="apps/countdown-timer.html" class="app-cta notify-button">View Roadmap & Get Notified</a>
+                        <p class="waitlist-count">Expected: Q3 2026</p>
+                    </div>
+                </div>
+
+                <!-- Custom Stickers -->
+                <div class="app-card in-development">
+                    <div class="app-status in-development">In Development</div>
+                    <div class="app-header">
+                        <span class="app-icon">🎨</span>
+                        <h3>Custom Stickers</h3>
+                        <p class="app-tagline">Branded Animations</p>
+                    </div>
+                    <div class="app-body">
+                        <p class="app-description">Turn your logo, mascot, or any design into custom animated stickers. Create unique, on-brand animations that represent your store.</p>
+                        <ul class="app-features">
+                            <li><span class="feature-check">✓</span> AI-powered animation</li>
+                            <li><span class="feature-check">✓</span> Upload any image/SVG</li>
+                            <li><span class="feature-check">✓</span> Custom movement patterns</li>
+                            <li><span class="feature-check">✓</span> Brand color matching</li>
+                            <li><span class="feature-check">✓</span> Unlimited variations</li>
+                        </ul>
+                        <a href="apps/custom-stickers.html" class="app-cta notify-button">View Roadmap & Get Notified</a>
+                        <p class="waitlist-count">Expected: Q4 2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="final-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Start With Funitize Today</h2>
+                <p class="cta-subtitle">Get the core animation app now for just $11.95/year, then add more tools as they launch.</p>
+                <a href="https://apps.shopify.com/funitize" class="cta-button cta-button-large pulse-glow" target="_blank">
+                    Download Funitize Now
+                    <span class="button-icon">🎉</span>
+                </a>
+                <p class="cta-caption">Limited offer: First 1000 sign-ups get lifetime access to all apps</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="/" class="logo">
+                    <img src="assets/fun-logo.png?v=20260213" alt="Funitize" class="logo-image">
+                </a>
+                <p>Make your Shopify store unforgettable.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <a href="index.html#features">Features</a>
+                    <a href="apps.html">All Apps</a>
+                    <a href="index.html#how-it-works">How It Works</a>
+                    <a href="https://apps.shopify.com/funitize" target="_blank">Download App</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="docs.html">Documentation</a>
+                    <a href="faq.html">FAQ</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="refund.html">Refund Policy</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="blog.html">Blog</a>
+                    <a href="apps.html">App Ecosystem</a>
+                    <a href="https://apps.shopify.com/funitize" target="_blank">Shopify App Store</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-social">
+                <a href="https://facebook.com/funitize" target="_blank" aria-label="Facebook">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+                <a href="https://instagram.com/funitize" target="_blank" aria-label="Instagram">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+            </div>
+            <p style="text-align: center; margin: 16px 0 8px;">&copy; 2026 Funitize. All rights reserved. Contact: <a href="mailto:funitize@gmail.com" style="color: var(--primary); text-decoration: none;">funitize@gmail.com</a></p>
+            <p style="text-align: center; font-size: 13px; color: rgba(255, 255, 255, 0.6); margin: 0;">Web Design and Custom Development Done by <a href="https://advancedmarketing.co" target="_blank" style="color: #5170FF; text-decoration: none;">AdvancedMarketing.co</a>. Want a website for your app or SaaS product? <a href="mailto:ben@justfeatured.com" style="color: #5170FF; text-decoration: none;">Contact us</a>.</p>
+        </div>
+    </footer>
+</body>
+</html>
