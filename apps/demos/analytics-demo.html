@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funitize Analytics - Live Demo</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        body {
+            background: #F8FAFC;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .demo-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .demo-header {
+            background: linear-gradient(135deg, #5170FF 0%, #FF66C4 100%);
+            padding: 40px;
+            border-radius: 24px;
+            color: white;
+            margin-bottom: 32px;
+        }
+
+        .demo-header h1 {
+            font-family: 'Righteous', sans-serif;
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .demo-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-top: 12px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #5170FF 0%, #FF66C4 100%);
+        }
+
+        .metric-label {
+            font-size: 13px;
+            color: #64748B;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-family: 'Righteous', sans-serif;
+            font-size: 48px;
+            color: #1E293B;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .metric-change {
+            font-size: 14px;
+            color: #22C55E;
+            font-weight: 600;
+        }
+
+        .metric-change.negative {
+            color: #EF4444;
+        }
+
+        .chart-container {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            margin-bottom: 32px;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .chart-title {
+            font-family: 'Righteous', sans-serif;
+            font-size: 20px;
+            color: #1E293B;
+        }
+
+        .chart-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .chart-button {
+            padding: 8px 16px;
+            background: #F1F5F9;
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #64748B;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .chart-button.active {
+            background: linear-gradient(135deg, #5170FF 0%, #FF66C4 100%);
+            color: white;
+        }
+
+        #clickChart {
+            width: 100%;
+            height: 300px;
+        }
+
+        .data-table {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #F8FAFC;
+        }
+
+        th {
+            padding: 16px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 700;
+            color: #64748B;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 16px;
+            border-top: 1px solid #E2E8F0;
+            color: #334155;
+        }
+
+        .animation-name {
+            font-weight: 600;
+            color: #1E293B;
+        }
+
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-badge.active {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+
+        .status-badge.paused {
+            background: #FEF3C7;
+            color: #92400E;
+        }
+
+        .revenue-value {
+            font-weight: 700;
+            color: #22C55E;
+        }
+
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #64748B;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: #22C55E;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .export-button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #5170FF 0%, #FF66C4 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 16px;
+        }
+
+        .export-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(81, 112, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <a href="../../index.html" class="logo">
+                <img src="../../assets/fun-logo.png" alt="Funitize" class="logo-image">
+            </a>
+            <nav class="nav">
+                <a href="../../apps.html" class="nav-link">← Back to Apps</a>
+                <a href="../analytics.html" class="cta-button cta-button-small">Join Waitlist</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>📊 Funitize Analytics - Live Demo</h1>
+            <p>This is a fully interactive preview of how Funitize Analytics will work. All metrics update in real-time.</p>
+            <span class="demo-badge">🔥 Interactive Demo - Try clicking around!</span>
+        </div>
+
+        <div class="live-indicator">
+            <div class="live-dot"></div>
+            <span>Live data updating every 3 seconds</span>
+        </div>
+
+        <div style="height: 24px;"></div>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-label">Total Clicks Today</div>
+                <div class="metric-value" id="totalClicks">12,847</div>
+                <div class="metric-change" id="clicksChange">↑ 24% vs yesterday</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">Conversions</div>
+                <div class="metric-value" id="conversions">1,094</div>
+                <div class="metric-change" id="conversionsChange">↑ 31% vs yesterday</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">Revenue Generated</div>
+                <div class="metric-value" id="revenue">$8,423</div>
+                <div class="metric-change" id="revenueChange">↑ 42% vs yesterday</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">Return on Investment</div>
+                <div class="metric-value" id="roi">703%</div>
+                <div class="metric-change" id="roiChange">↑ 18% vs yesterday</div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <div class="chart-header">
+                <h3 class="chart-title">Click Activity (Last 24 Hours)</h3>
+                <div class="chart-controls">
+                    <button class="chart-button active" onclick="changeTimeRange('24h')">24H</button>
+                    <button class="chart-button" onclick="changeTimeRange('7d')">7D</button>
+                    <button class="chart-button" onclick="changeTimeRange('30d')">30D</button>
+                </div>
+            </div>
+            <canvas id="clickChart"></canvas>
+        </div>
+
+        <div class="data-table">
+            <h3 class="chart-title">Active Animations Performance</h3>
+            <table id="animationsTable">
+                <thead>
+                    <tr>
+                        <th>Animation</th>
+                        <th>Status</th>
+                        <th>Clicks</th>
+                        <th>Conversions</th>
+                        <th>CTR</th>
+                        <th>Revenue</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Will be populated by JavaScript -->
+                </tbody>
+            </table>
+            <button class="export-button" onclick="exportData()">📥 Export Data (CSV)</button>
+        </div>
+    </div>
+
+    <script>
+        // Real-time data simulation
+        let metrics = {
+            clicks: 12847,
+            conversions: 1094,
+            revenue: 8423,
+            roi: 703
+        };
+
+        const animations = [
+            { name: 'Valentine Hearts', status: 'active', clicks: 4235, conversions: 412, ctr: 9.73, revenue: 2847 },
+            { name: 'Snow Effect', status: 'active', clicks: 3821, conversions: 298, ctr: 7.80, revenue: 2156 },
+            { name: 'Fireworks', status: 'active', clicks: 2934, conversions: 241, ctr: 8.21, revenue: 1892 },
+            { name: 'Falling Leaves', status: 'paused', clicks: 1857, conversions: 143, ctr: 7.70, revenue: 1528 }
+        ];
+
+        function updateMetrics() {
+            // Simulate real-time updates
+            metrics.clicks += Math.floor(Math.random() * 20) + 5;
+            metrics.conversions += Math.floor(Math.random() * 3);
+            metrics.revenue += Math.floor(Math.random() * 50) + 10;
+            metrics.roi = Math.floor((metrics.revenue / 12) * 100);
+
+            // Animate value changes
+            animateValue('totalClicks', metrics.clicks);
+            animateValue('conversions', metrics.conversions);
+            animateValue('revenue', metrics.revenue, '$');
+            animateValue('roi', metrics.roi, '', '%');
+
+            // Update animations table
+            animations.forEach(anim => {
+                if (anim.status === 'active') {
+                    anim.clicks += Math.floor(Math.random() * 5) + 1;
+                    anim.conversions += Math.random() > 0.7 ? 1 : 0;
+                    anim.ctr = ((anim.conversions / anim.clicks) * 100).toFixed(2);
+                    anim.revenue += Math.floor(Math.random() * 20) + 5;
+                }
+            });
+
+            renderTable();
+        }
+
+        function animateValue(id, value, prefix = '', suffix = '') {
+            const element = document.getElementById(id);
+            element.style.transform = 'scale(1.1)';
+            element.style.color = '#5170FF';
+            element.textContent = prefix + value.toLocaleString() + suffix;
+            setTimeout(() => {
+                element.style.transform = 'scale(1)';
+                element.style.color = '#1E293B';
+            }, 200);
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = animations.map(anim => `
+                <tr>
+                    <td class="animation-name">${anim.name}</td>
+                    <td><span class="status-badge ${anim.status}">${anim.status.toUpperCase()}</span></td>
+                    <td>${anim.clicks.toLocaleString()}</td>
+                    <td>${anim.conversions}</td>
+                    <td>${anim.ctr}%</td>
+                    <td class="revenue-value">$${anim.revenue.toLocaleString()}</td>
+                </tr>
+            `).join('');
+        }
+
+        function drawChart() {
+            const canvas = document.getElementById('clickChart');
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = 300;
+
+            const data = Array.from({ length: 24 }, (_, i) => Math.floor(Math.random() * 800) + 200);
+
+            const maxValue = Math.max(...data);
+            const padding = 40;
+            const chartWidth = canvas.width - padding * 2;
+            const chartHeight = canvas.height - padding * 2;
+            const barWidth = chartWidth / data.length;
+
+            // Draw gradient background
+            const gradient = ctx.createLinearGradient(0, padding, 0, canvas.height - padding);
+            gradient.addColorStop(0, 'rgba(81, 112, 255, 0.2)');
+            gradient.addColorStop(1, 'rgba(255, 102, 196, 0.2)');
+
+            // Draw bars
+            data.forEach((value, index) => {
+                const barHeight = (value / maxValue) * chartHeight;
+                const x = padding + index * barWidth;
+                const y = canvas.height - padding - barHeight;
+
+                // Bar gradient
+                const barGradient = ctx.createLinearGradient(0, y, 0, canvas.height - padding);
+                barGradient.addColorStop(0, '#5170FF');
+                barGradient.addColorStop(1, '#FF66C4');
+
+                ctx.fillStyle = barGradient;
+                ctx.fillRect(x + 2, y, barWidth - 4, barHeight);
+            });
+
+            // Draw axes
+            ctx.strokeStyle = '#E2E8F0';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(padding, canvas.height - padding);
+            ctx.lineTo(canvas.width - padding, canvas.height - padding);
+            ctx.stroke();
+
+            // Labels
+            ctx.fillStyle = '#64748B';
+            ctx.font = '12px DM Sans';
+            ctx.fillText('12am', padding, canvas.height - 10);
+            ctx.fillText('12pm', canvas.width / 2, canvas.height - 10);
+            ctx.fillText('11pm', canvas.width - padding - 30, canvas.height - 10);
+        }
+
+        function changeTimeRange(range) {
+            // Update button states
+            document.querySelectorAll('.chart-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Redraw chart with new data
+            drawChart();
+        }
+
+        function exportData() {
+            const csv = [
+                ['Animation', 'Status', 'Clicks', 'Conversions', 'CTR', 'Revenue'],
+                ...animations.map(a => [a.name, a.status, a.clicks, a.conversions, a.ctr + '%', '$' + a.revenue])
+            ].map(row => row.join(',')).join('\n');
+
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'funitize-analytics-' + new Date().toISOString().split('T')[0] + '.csv';
+            a.click();
+
+            alert('✅ Data exported successfully!');
+        }
+
+        // Initialize
+        renderTable();
+        drawChart();
+
+        // Update every 3 seconds
+        setInterval(updateMetrics, 3000);
+
+        // Redraw chart on window resize
+        window.addEventListener('resize', drawChart);
+    </script>
+</body>
+</html>

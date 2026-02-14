@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Builder Pro - Interactive Demo</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        body { background: #F8FAFC; font-family: 'DM Sans', sans-serif; }
+        .builder-container { max-width: 1600px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 300px 1fr 350px; gap: 24px; }
+        .panel { background: white; padding: 24px; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+        .panel h3 { font-family: 'Righteous', sans-serif; margin-bottom: 16px; }
+        .canvas { background: #F8FAFC; min-height: 600px; display: flex; align-items: center; justify-content: center; position: relative; }
+        .popup-preview { background: white; padding: 40px; border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); max-width: 500px; width: 100%; }
+        .popup-preview h2 { font-family: 'Righteous', sans-serif; font-size: 32px; margin-bottom: 16px; }
+        .popup-preview input { width: 100%; padding: 16px; border: 2px solid #E2E8F0; border-radius: 12px; margin: 12px 0; font-size: 16px; }
+        .popup-preview button { width: 100%; padding: 18px; background: linear-gradient(135deg, #5170FF 0%, #FF66C4 100%); color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; }
+        .element-list { display: flex; flex-direction: column; gap: 12px; }
+        .element-btn { padding: 12px 16px; background: #F8FAFC; border: 2px solid #E2E8F0; border-radius: 12px; text-align: left; cursor: move; transition: all 0.2s; }
+        .element-btn:hover { background: linear-gradient(135deg, rgba(81,112,255,0.1) 0%, rgba(255,102,196,0.1) 100%); border-color: #5170FF; }
+        .control-group { margin-bottom: 20px; }
+        .control-group label { display: block; font-weight: 600; color: #334155; margin-bottom: 8px; font-size: 14px; }
+        .control-group input, .control-group select, .control-group textarea { width: 100%; padding: 12px; border: 2px solid #E2E8F0; border-radius: 8px; font-size: 14px; }
+        .color-picker { display: flex; gap: 12px; }
+        .color-option { width: 40px; height: 40px; border-radius: 8px; cursor: pointer; border: 3px solid transparent; transition: all 0.2s; }
+        .color-option.active { border-color: #1E293B; transform: scale(1.1); }
+        .preview-button { width: 100%; padding: 16px; background: linear-gradient(135deg, #5170FF 0%, #FF66C4 100%); color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; margin-top: 20px; }
+        .demo-badge { background: linear-gradient(135deg, #FFB800 0%, #FF66C4 100%); color: white; padding: 12px 24px; border-radius: 50px; display: inline-block; font-weight: 700; margin-bottom: 24px; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <a href="../../index.html" class="logo"><img src="../../assets/fun-logo.png" alt="Funitize"></a>
+            <nav class="nav">
+                <a href="../../apps.html" class="nav-link">← Back to Apps</a>
+                <a href="../popup-builder.html" class="cta-button cta-button-small">Join Waitlist</a>
+            </nav>
+        </div>
+    </header>
+
+    <div style="text-align: center; padding: 40px 20px 0;">
+        <span class="demo-badge">🎨 Interactive Demo - Build Your Popup!</span>
+    </div>
+
+    <div class="builder-container">
+        <div class="panel">
+            <h3>🧩 Elements</h3>
+            <div class="element-list">
+                <button class="element-btn" onclick="addElement('heading')">📝 Heading</button>
+                <button class="element-btn" onclick="addElement('text')">📄 Paragraph</button>
+                <button class="element-btn" onclick="addElement('input')">📧 Email Input</button>
+                <button class="element-btn" onclick="addElement('button')">🔘 Button</button>
+                <button class="element-btn" onclick="addElement('image')">🖼️ Image</button>
+            </div>
+        </div>
+
+        <div class="panel canvas" id="canvas">
+            <div class="popup-preview" id="popupPreview">
+                <h2 id="popupHeading">Get 20% Off Your First Order!</h2>
+                <p id="popupText">Join our mailing list and save on your first purchase.</p>
+                <input type="email" placeholder="Enter your email" id="popupEmail">
+                <button id="popupButton">Claim My Discount</button>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h3>🎨 Customize</h3>
+            <div class="control-group">
+                <label>Heading Text</label>
+                <input type="text" value="Get 20% Off Your First Order!" oninput="updateHeading(this.value)">
+            </div>
+            <div class="control-group">
+                <label>Description</label>
+                <textarea oninput="updateText(this.value)" rows="3">Join our mailing list and save on your first purchase.</textarea>
+            </div>
+            <div class="control-group">
+                <label>Button Text</label>
+                <input type="text" value="Claim My Discount" oninput="updateButton(this.value)">
+            </div>
+            <div class="control-group">
+                <label>Button Color</label>
+                <div class="color-picker">
+                    <div class="color-option active" style="background: linear-gradient(135deg, #5170FF 0%, #FF66C4 100%);" onclick="changeColor(this, 'linear-gradient(135deg, #5170FF 0%, #FF66C4 100%)')"></div>
+                    <div class="color-option" style="background: linear-gradient(135deg, #22C55E 0%, #10B981 100%);" onclick="changeColor(this, 'linear-gradient(135deg, #22C55E 0%, #10B981 100%)')"></div>
+                    <div class="color-option" style="background: linear-gradient(135deg, #FFB800 0%, #FF6B00 100%);" onclick="changeColor(this, 'linear-gradient(135deg, #FFB800 0%, #FF6B00 100%)')"></div>
+                    <div class="color-option" style="background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);" onclick="changeColor(this, 'linear-gradient(135deg, #EF4444 0%, #DC2626 100%)')"></div>
+                </div>
+            </div>
+            <button class="preview-button" onclick="showLivePreview()">👀 Preview Live</button>
+            <button class="preview-button" style="background: #22C55E;" onclick="exportPopup()">💾 Export Code</button>
+        </div>
+    </div>
+
+    <script>
+        function updateHeading(text) { document.getElementById('popupHeading').textContent = text; }
+        function updateText(text) { document.getElementById('popupText').textContent = text; }
+        function updateButton(text) { document.getElementById('popupButton').textContent = text; }
+        
+        function changeColor(element, color) {
+            document.querySelectorAll('.color-option').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            document.getElementById('popupButton').style.background = color;
+        }
+
+        function addElement(type) {
+            alert('✨ Element added! In the full version, you can drag and drop elements to build custom popups.');
+        }
+
+        function showLivePreview() {
+            const preview = document.getElementById('popupPreview');
+            preview.style.animation = 'none';
+            setTimeout(() => {
+                preview.style.animation = 'fadeInScale 0.5s ease';
+            }, 10);
+        }
+
+        function exportPopup() {
+            const code = `<!-- Funitize Popup Code -->
+<div class="funitize-popup">
+  <h2>${document.getElementById('popupHeading').textContent}</h2>
+  <p>${document.getElementById('popupText').textContent}</p>
+  <input type="email" placeholder="Enter your email">
+  <button>${document.getElementById('popupButton').textContent}</button>
+</div>`;
+            
+            navigator.clipboard.writeText(code);
+            alert('✅ Popup code copied to clipboard!');
+        }
+    </script>
+    <style>
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</body>
+</html>

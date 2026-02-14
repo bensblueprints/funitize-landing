@@ -396,7 +396,6 @@
                 <div class="hero-text">
                     <h1>📊 Funitize Analytics</h1>
                     <p>Finally see the real impact of your animations. Track clicks, conversions, revenue, and ROI from every animation you run. Make data-driven decisions to maximize sales.</p>
-                    <a href="demos/analytics-demo.html" class="cta-button cta-button-large" style="background: #22C55E; margin-right: 16px;">🎮 Try Interactive Demo</a>
                     <a href="#waitlist" class="cta-button cta-button-large">Join the Waitlist</a>
 
                     <div class="hero-stats">

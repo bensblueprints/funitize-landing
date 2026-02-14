@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Demo</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .demo-container { max-width: 1200px; margin: 40px auto; padding: 40px; }
+        .demo-card { background: white; padding: 48px; border-radius: 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); text-align: center; }
+        .demo-card h1 { font-family: 'Righteous', sans-serif; font-size: 48px; margin-bottom: 24px; }
+        .demo-button { padding: 20px 48px; background: linear-gradient(135deg, #5170FF 0%, #FF66C4 100%); color: white; border: none; border-radius: 16px; font-size: 18px; font-weight: 700; cursor: pointer; margin: 12px; transition: all 0.3s ease; }
+        .demo-button:hover { transform: scale(1.05); box-shadow: 0 8px 24px rgba(81,112,255,0.4); }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <a href="../../index.html" class="logo"><img src="../../assets/fun-logo.png" alt="Funitize"></a>
+            <nav class="nav"><a href="../../apps.html" class="nav-link">← Back to Apps</a></nav>
+        </div>
+    </header>
+    <div class="demo-container">
+        <div class="demo-card">
+            <h1>🎨 Interactive Demo Coming Soon</h1>
+            <p style="font-size: 20px; color: #64748B; margin-bottom: 32px;">This demo is currently being built. Join the waitlist to be notified when it launches!</p>
+            <button class="demo-button" onclick="window.location.href='../../apps.html'">← Back to All Apps</button>
+            <button class="demo-button" style="background: #22C55E;" onclick="alert('Thank you for your interest! We\'ll notify you when this demo is ready.')">Get Notified</button>
+        </div>
+    </div>
+</body>
+</html>

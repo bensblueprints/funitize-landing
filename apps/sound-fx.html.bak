@@ -13,7 +13,7 @@
             <nav class="nav">
                 <a href="../index.html" class="nav-link">Home</a>
                 <a href="../apps.html" class="nav-link">All Apps</a>
-                <a href="demos/sound-fx-demo.html" class="cta-button cta-button-small">Get Notified</a>
+                <a href="#waitlist" class="cta-button cta-button-small">Get Notified</a>
             </nav>
         </div>
     </header>
@@ -22,7 +22,7 @@
         <div class="container">
             <h1 style="font-family: 'Righteous', sans-serif; font-size: 56px; margin-bottom: 24px;">🔊 Sound FX</h1>
             <p style="font-size: 20px; max-width: 600px; margin: 0 auto 32px;">Transform your Shopify store with this powerful addition to the Funitize ecosystem. Join the waitlist to be first in line.</p>
-            <a href="demos/sound-fx-demo.html" class="cta-button cta-button-large">Join Waitlist</a>
+            <a href="#waitlist" class="cta-button cta-button-large">Join Waitlist</a>
         </div>
     </section>
 

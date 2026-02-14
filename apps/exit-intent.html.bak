@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funitize 🔊 Sound FX - Coming Soon</title>
+    <title>Funitize 🎯 Exit Intent Pro - Coming Soon</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -13,16 +13,16 @@
             <nav class="nav">
                 <a href="../index.html" class="nav-link">Home</a>
                 <a href="../apps.html" class="nav-link">All Apps</a>
-                <a href="demos/sound-fx-demo.html" class="cta-button cta-button-small">Get Notified</a>
+                <a href="#waitlist" class="cta-button cta-button-small">Get Notified</a>
             </nav>
         </div>
     </header>
 
     <section style="padding: 120px 0; background: linear-gradient(135deg, #5170FF 0%, #FF66C4 100%); text-align: center; color: white;">
         <div class="container">
-            <h1 style="font-family: 'Righteous', sans-serif; font-size: 56px; margin-bottom: 24px;">🔊 Sound FX</h1>
+            <h1 style="font-family: 'Righteous', sans-serif; font-size: 56px; margin-bottom: 24px;">🎯 Exit Intent Pro</h1>
             <p style="font-size: 20px; max-width: 600px; margin: 0 auto 32px;">Transform your Shopify store with this powerful addition to the Funitize ecosystem. Join the waitlist to be first in line.</p>
-            <a href="demos/sound-fx-demo.html" class="cta-button cta-button-large">Join Waitlist</a>
+            <a href="#waitlist" class="cta-button cta-button-large">Join Waitlist</a>
         </div>
     </section>
 
@@ -30,7 +30,7 @@
         <div class="container" style="max-width: 800px; text-align: center;">
             <h2 style="font-family: 'Righteous', sans-serif; font-size: 42px; margin-bottom: 60px;">Coming Soon</h2>
             <div style="padding: 48px; background: white; border-radius: 24px; box-shadow: 0 16px 48px rgba(0,0,0,0.1);">
-                <p style="font-size: 18px; color: #64748B; margin-bottom: 24px;">We're actively developing 🔊 Sound FX to bring you the best possible experience. Join the waitlist to get early access and exclusive launch pricing.</p>
+                <p style="font-size: 18px; color: #64748B; margin-bottom: 24px;">We're actively developing 🎯 Exit Intent Pro to bring you the best possible experience. Join the waitlist to get early access and exclusive launch pricing.</p>
                 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px;">
                     <div style="padding: 24px; background: linear-gradient(135deg, rgba(81, 112, 255, 0.1) 0%, rgba(255, 102, 196, 0.1) 100%); border-radius: 16px;">
                         <h3 style="font-size: 32px; color: #5170FF;">50%</h3>
@@ -41,7 +41,7 @@
                         <p style="font-size: 14px; color: #64748B;">2026 Launch</p>
                     </div>
                     <div style="padding: 24px; background: linear-gradient(135deg, rgba(81, 112, 255, 0.1) 0%, rgba(255, 102, 196, 0.1) 100%); border-radius: 16px;">
-                        <h3 style="font-size: 32px; color: #5170FF;">521</h3>
+                        <h3 style="font-size: 32px; color: #5170FF;">1109</h3>
                         <p style="font-size: 14px; color: #64748B;">On Waitlist</p>
                     </div>
                 </div>
