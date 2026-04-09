@@ -1,0 +1,1 @@
+{"id":"/script.js","path":"/script.js","sha":"78c0ae9ef987ee3eb045acbfeecd0bad5773bb9e","mime_type":"application/javascript","size":17340,"site_id":"bb294039-f978-44a7-9da5-4dca867509c9","deploy_id":"698f5750f65aff1955b766fd"}
